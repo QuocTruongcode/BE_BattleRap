@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "sa",
+    "password": "1",
+    "database": "BattleRapDB",
+    "host": "localhost",
+    "dialect": "mssql",
+    "quoteIdentifiers": true
+  },
+  "test": {
+    "username": "sa",
+    "password": "1",
+    "database": "BattleRapDB_Test",
+    "host": "localhost",
+    "dialect": "mssql",
+    "quoteIdentifiers": true
+  },
+  "production": {
+    "username": "sa",
+    "password": "1",
+    "database": "BattleRapDB",
+    "host": "localhost",
+    "dialect": "mssql",
+    "quoteIdentifiers": true
+  }
+}
