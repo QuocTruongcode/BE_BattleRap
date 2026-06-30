@@ -18,4 +18,7 @@ router.put("/:id", barController.updateBarController);
 // DELETE: Xóa bar
 router.delete("/:id", barController.deleteBarController);
 
+// DELETE ALL BAR BY VIDEOID
+router.delete("/video/:videoId", barController.deleteBarsByVideoIdController);
+
 module.exports = router;

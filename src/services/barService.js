@@ -17,7 +17,7 @@ const createBar = async (barData) => {
             const bars = [];
             for (const bar of barData) {
                 // Validation
-                if (!bar.startTime && bar.startTime !== 0) {
+                if (!bar.time && bar.time !== 0) {
                     throw new Error("startTime là bắt buộc");
                 }
                 // if (!bar.endTime && bar.endTime !== 0) {
@@ -31,7 +31,7 @@ const createBar = async (barData) => {
                 await checkVideoExists(bar.videoId);
 
                 const newBar = await Bar.create({
-                    startTime: bar.startTime,
+                    startTime: bar.time,
                     endTime: bar.endTime,
                     content: bar.content || null,
                     videoId: bar.videoId,
@@ -41,7 +41,7 @@ const createBar = async (barData) => {
             return bars;
         } else {
             // Một bar
-            if (!barData.startTime && barData.startTime !== 0) {
+            if (!barData.time && barData.time !== 0) {
                 throw new Error("startTime là bắt buộc");
             }
             if (!barData.endTime && barData.endTime !== 0) {
@@ -55,7 +55,7 @@ const createBar = async (barData) => {
             await checkVideoExists(barData.videoId);
 
             const bar = await Bar.create({
-                startTime: barData.startTime,
+                startTime: barData.time,
                 endTime: barData.endTime,
                 content: barData.content || null,
                 videoId: barData.videoId,
@@ -109,13 +109,10 @@ const updateBar = async (id, barData) => {
         if (barData.startTime !== undefined && !barData.startTime && barData.startTime !== 0) {
             throw new Error("startTime không được để trống");
         }
-        if (barData.endTime !== undefined && !barData.endTime && barData.endTime !== 0) {
-            throw new Error("endTime không được để trống");
-        }
 
         await bar.update({
             startTime: barData.startTime !== undefined ? barData.startTime : bar.startTime,
-            endTime: barData.endTime !== undefined ? barData.endTime : bar.endTime,
+            // endTime: barData.endTime !== undefined ? barData.endTime : bar.endTime,
             content: barData.content !== undefined ? barData.content : bar.content,
             videoId: barData.videoId !== undefined ? barData.videoId : bar.videoId,
         });
@@ -139,10 +136,28 @@ const deleteBar = async (id) => {
     }
 };
 
+// Xoá all bar theo videoId
+const deleteBarsByVideoId = async (videoId) => {
+    try {
+        const bars = await Bar.findAll({
+            where: { videoId },
+        });
+        if (!bars || bars.length === 0) {
+            throw new Error("Không tìm thấy bar nào cho video này");
+        }
+        await Bar.destroy({
+            where: { videoId },
+        });
+        return { message: "Xóa tất cả bar thành công" };
+    } catch (error) {
+        throw new Error(`Lỗi khi xóa bar: ${error.message}`);
+    }
+};
+
 module.exports = {
     createBar,
     getBarsByVideoId,
     getBarById,
     updateBar,
-    deleteBar,
+    deleteBar, deleteBarsByVideoId,
 };

@@ -111,8 +111,6 @@ const updateBarController = async (req, res) => {
         if (
             !barData.startTime &&
             barData.startTime !== 0 &&
-            !barData.endTime &&
-            barData.endTime !== 0 &&
             !barData.content &&
             !barData.videoId
         ) {
@@ -164,10 +162,34 @@ const deleteBarController = async (req, res) => {
     }
 };
 
+const deleteBarsByVideoIdController = async (req, res) => {
+    try {
+        const { videoId } = req.params;
+        if (!videoId || isNaN(videoId)) {
+            return res.status(400).json({
+                success: false,
+                message: "VideoId phải là một số nguyên hợp lệ",
+            });
+        }
+        const result = await barService.deleteBarsByVideoId(videoId);
+        res.status(200).json({
+            success: true,
+            message: result.message,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+    }
+
+};
+
 module.exports = {
     createBarController,
     getBarsByVideoIdController,
     getBarByIdController,
     updateBarController,
     deleteBarController,
+    deleteBarsByVideoIdController,
 };
