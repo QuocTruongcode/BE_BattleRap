@@ -10,18 +10,41 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
       Bar.hasOne(models.Explanation, {
         foreignKey: 'barId',
         onDelete: 'CASCADE',
+      });
+
+      Bar.belongsTo(models.AllCode, {
+        foreignKey: 'barType',
+        targetKey: 'KeyMap',
+        as: 'BarTypeRef'
+      });
+
+      Bar.hasMany(models.BarRelationship, {
+        foreignKey: 'SourceBarID',
+        sourceKey: 'id',
+        onDelete: 'CASCADE',
+      });
+
+      Bar.hasOne(models.Entity, {
+        foreignKey: 'RefID',
+        sourceKey: 'id',
+        onDelete: 'SET NULL',
+        constraints: false,
+        as: 'EntityRef',
+        scope: {
+          EntityType: 'Bar'
+        }
       });
     }
   }
   Bar.init({
     startTime: DataTypes.FLOAT,
-    endTime: DataTypes.FLOAT,
     content: DataTypes.TEXT,
-    videoId: DataTypes.INTEGER
+    videoId: DataTypes.INTEGER,
+    barttelID: DataTypes.INTEGER,
+    barType: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Bar',

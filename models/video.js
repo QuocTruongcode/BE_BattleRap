@@ -10,13 +10,26 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Video.hasOne(models.Entity, {
+        foreignKey: 'RefID',
+        sourceKey: 'id',
+        onDelete: 'SET NULL',
+        constraints: false,
+        as: 'EntityRef',
+        scope: {
+          EntityType: 'Video'
+        }
+      });
     }
   }
   Video.init({
     title: DataTypes.STRING,
     linkVideo: DataTypes.STRING,
-    thumbnailUrl: DataTypes.STRING
+    thumbnailUrl: DataTypes.STRING,
+    battlerID: DataTypes.INTEGER,
+    review: DataTypes.TEXT,
+    eventID: DataTypes.INTEGER,
+    cleanScore: DataTypes.FLOAT,
   }, {
     sequelize,
     modelName: 'Video',

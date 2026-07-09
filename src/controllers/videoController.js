@@ -3,7 +3,7 @@ const videoService = require("../services/videoService");
 // Tạo video mới
 const createVideoController = async (req, res) => {
     try {
-        const { title, linkVideo, thumbnailUrl } = req.body;
+        const { title, linkVideo, thumbnailUrl, battlerID, review, eventID, cleanScore } = req.body;
         console.log("Check request body: ", req.body)
         console.log("Check thumbnailUrl: ", thumbnailUrl)
 
@@ -20,6 +20,10 @@ const createVideoController = async (req, res) => {
             title,
             linkVideo,
             thumbnailUrl,
+            battlerID,
+            review,
+            eventID,
+            cleanScore,
         });
 
         res.status(201).json({
@@ -81,7 +85,7 @@ const getVideoByIdController = async (req, res) => {
 const updateVideoController = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, linkVideo, thumbnailUrl } = req.body;
+        const { title, linkVideo, thumbnailUrl, battlerID, review, eventID, cleanScore } = req.body;
 
         // Validation id
         if (!id || isNaN(id)) {
@@ -92,7 +96,7 @@ const updateVideoController = async (req, res) => {
         }
 
         // Validation dữ liệu cập nhật
-        if (!title && !linkVideo && !thumbnailUrl) {
+        if (Object.keys(req.body).length === 0) {
             return res.status(400).json({
                 success: false,
                 message: "Vui lòng cung cấp ít nhất một trường để cập nhật",
@@ -103,6 +107,10 @@ const updateVideoController = async (req, res) => {
             title,
             linkVideo,
             thumbnailUrl,
+            battlerID,
+            review,
+            eventID,
+            cleanScore,
         });
 
         res.status(200).json({

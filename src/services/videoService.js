@@ -7,6 +7,10 @@ const createVideo = async (videoData) => {
             title: videoData.title,
             linkVideo: videoData.linkVideo,
             thumbnailUrl: videoData.thumbnailUrl,
+            battlerID: videoData.battlerID,
+            review: videoData.review,
+            eventID: videoData.eventID,
+            cleanScore: videoData.cleanScore,
         });
         return video;
     } catch (error) {

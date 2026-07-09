@@ -8,6 +8,8 @@ const app = express();
 const videoRoutes = require("./routes/videoRoutes");
 const barRoutes = require("./routes/barRoutes");
 const explanationRoutes = require("./routes/explanationRoutes");
+const barRelationshipRoutes = require("./routes/barRelationshipRoutes");
+const allCodeRoutes = require("./routes/allCodeRoutes");
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +22,8 @@ app.get("/", (req, res) => {
 app.use("/api/videos", videoRoutes);
 app.use("/api/bars", barRoutes);
 app.use("/api/explanations", explanationRoutes);
+app.use("/api/bar-relationships", barRelationshipRoutes);
+app.use("/api/allcodes", allCodeRoutes);
 
 app.listen(3001, () => {
     console.log("Server started at port 3001");
