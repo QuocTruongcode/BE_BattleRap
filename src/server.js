@@ -10,7 +10,7 @@ const barRoutes = require("./routes/barRoutes");
 const explanationRoutes = require("./routes/explanationRoutes");
 const barRelationshipRoutes = require("./routes/barRelationshipRoutes");
 const allCodeRoutes = require("./routes/allCodeRoutes");
-
+const youtubeRoute = require("./routes/youtobeRouter");
 app.use(cors());
 app.use(express.json());
 
@@ -24,7 +24,7 @@ app.use("/api/bars", barRoutes);
 app.use("/api/explanations", explanationRoutes);
 app.use("/api/bar-relationships", barRelationshipRoutes);
 app.use("/api/allcodes", allCodeRoutes);
-
+app.use("/api/youtube", youtubeRoute);
 app.listen(3001, () => {
     console.log("Server started at port 3001");
 });
