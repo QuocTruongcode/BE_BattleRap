@@ -75,10 +75,14 @@ const getReplies = async (parentId) => {
     }
 }
 
-const getComments = async (videoId) => {
+// youtubeService.js — sửa hàm getComments
+
+const getComments = async (videoId, onProgress = () => { }) => {
     const allComments = [];
     let nextPageToken = null;
     try {
+        onProgress('step', { step: 'fetching_comments', message: 'Đang lấy bình luận từ YouTube...' });
+
         do {
             const response = await axios.get(
                 "https://www.googleapis.com/youtube/v3/commentThreads",
@@ -95,21 +99,25 @@ const getComments = async (videoId) => {
             nextPageToken = response.data.nextPageToken;
             allComments.push(...response.data.items);
         } while (nextPageToken);
+
         const mappedComments = mapComments(allComments);
+
+        onProgress('step', { step: 'fetching_replies', message: 'Đang lấy phản hồi bình luận...' });
         for (const comment of mappedComments) {
             if (comment.replyCount > 0) {
                 comment.replies = await getReplies(comment.commentId);
             }
         }
+
+        onProgress('step', { step: 'formatting', message: 'Đang định dạng dữ liệu...' });
         const commentsTextList = convertCommentsToTextList(mappedComments);
+
+        onProgress('step', { step: 'analyzing', message: 'Đang phân tích với AI...' });
         const aiResponse = await askQuestion(ContextPrompt + commentsTextList);
 
-        return {
-            textList: aiResponse,
-
-        }
+        return { textList: aiResponse };
     } catch (error) {
-        throw error;
+        throw error; // để controller bắt và gửi event 'error'
     }
 }
 
@@ -136,7 +144,7 @@ function convertCommentsToTextList(comments) {
     return comments.map((comment) => formatComment(comment)).join("\n");
 }
 
-// Call Service  AI
+// Call Service AI
 
 async function askQuestion(question) {
     try {
