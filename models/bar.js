@@ -37,6 +37,13 @@ module.exports = (sequelize, DataTypes) => {
           EntityType: 'Bar'
         }
       });
+
+      Bar.belongsToMany(models.AllCode, {
+        through: models.BarReaction,
+        foreignKey: 'barID',
+        otherKey: 'ReactionType',
+        as: 'Reactions'
+      });
     }
   }
   Bar.init({

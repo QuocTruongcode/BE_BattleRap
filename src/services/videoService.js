@@ -6,6 +6,7 @@ const createVideo = async (videoData) => {
         const video = await Video.create({
             title: videoData.title,
             linkVideo: videoData.linkVideo,
+            linkBunny: videoData.linkBunny,
             thumbnailUrl: videoData.thumbnailUrl,
             battlerID: videoData.battlerID,
             review: videoData.review,

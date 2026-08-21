@@ -12,6 +12,7 @@ const barRelationshipRoutes = require("./routes/barRelationshipRoutes");
 const allCodeRoutes = require("./routes/allCodeRoutes");
 const createReviewRouter = require("./routes/createReviewRouter");
 const searchRoutes = require("./routes/searchRoutes");
+const barReactionRoutes = require("./routes/barReactionRoutes");
 
 app.use(cors());
 app.use(express.json());
@@ -28,6 +29,7 @@ app.use("/api/bar-relationships", barRelationshipRoutes);
 app.use("/api/allcodes", allCodeRoutes);
 app.use("/api/review", createReviewRouter);
 app.use("/api/search", searchRoutes);
+app.use("/api/bar-reactions", barReactionRoutes);
 
 app.listen(3001, () => {
     console.log("Server started at port 3001");

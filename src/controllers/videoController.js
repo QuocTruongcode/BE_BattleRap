@@ -3,7 +3,7 @@ const videoService = require("../services/videoService");
 // Tạo video mới
 const createVideoController = async (req, res) => {
     try {
-        const { title, linkVideo, thumbnailUrl, battlerID, review, eventID, cleanScore } = req.body;
+        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore } = req.body;
         console.log("Check request body: ", req.body)
         console.log("Check thumbnailUrl: ", thumbnailUrl)
 
@@ -19,6 +19,7 @@ const createVideoController = async (req, res) => {
         const video = await videoService.createVideo({
             title,
             linkVideo,
+            linkBunny,
             thumbnailUrl,
             battlerID,
             review,
@@ -85,7 +86,7 @@ const getVideoByIdController = async (req, res) => {
 const updateVideoController = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, linkVideo, thumbnailUrl, battlerID, review, eventID, cleanScore } = req.body;
+        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore } = req.body;
 
         // Validation id
         if (!id || isNaN(id)) {
@@ -106,6 +107,7 @@ const updateVideoController = async (req, res) => {
         const video = await videoService.updateVideo(id, {
             title,
             linkVideo,
+            linkBunny,
             thumbnailUrl,
             battlerID,
             review,

@@ -21,6 +21,13 @@ module.exports = (sequelize, DataTypes) => {
                 sourceKey: 'KeyMap',
                 as: 'BarRelationships'
             });
+
+            AllCode.belongsToMany(models.Bar, {
+                through: models.BarReaction,
+                foreignKey: 'ReactionType',
+                otherKey: 'barID',
+                as: 'ReactedBars'
+            });
         }
     }
     AllCode.init({
