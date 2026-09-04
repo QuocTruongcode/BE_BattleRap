@@ -22,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
                 as: 'BarRelationships'
             });
 
+            AllCode.hasMany(models.User, {
+                foreignKey: 'UserType',
+                sourceKey: 'KeyMap',
+                as: 'Users'
+            });
+
             AllCode.belongsToMany(models.Bar, {
                 through: models.BarReaction,
                 foreignKey: 'ReactionType',

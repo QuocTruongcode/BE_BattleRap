@@ -1,10 +1,10 @@
 const express = require("express");
 const videoController = require("../controllers/videoController");
-
+const requireRole = require("../middleware/requireRole");
 const router = express.Router();
 
 // POST: Tạo video mới
-router.post("/", videoController.createVideoController);
+router.post("/", requireRole("U0"), videoController.createVideoController);
 
 // GET: Lấy tất cả video
 router.get("/", videoController.getAllVideosController);
@@ -13,9 +13,9 @@ router.get("/", videoController.getAllVideosController);
 router.get("/:id", videoController.getVideoByIdController);
 
 // PUT: Cập nhật video
-router.put("/:id", videoController.updateVideoController);
+router.put("/:id", requireRole("U0"), videoController.updateVideoController);
 
 // DELETE: Xóa video
-router.delete("/:id", videoController.deleteVideoController);
+router.delete("/:id", requireRole("U0"), videoController.deleteVideoController);
 
 module.exports = router;
