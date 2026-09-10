@@ -9,6 +9,12 @@ module.exports = (sequelize, DataTypes) => {
                 targetKey: 'KeyMap',
                 as: 'Type'
             });
+
+            User.hasMany(models.BarReaction, {
+                foreignKey: 'userID',
+                sourceKey: 'id',
+                as: 'BarReactions'
+            });
         }
     }
 

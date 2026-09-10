@@ -36,13 +36,13 @@ const getComments = async (videoId, onProgress = () => { }, signal) => {
             }
         }
 
-        onProgress('step', { step: 'formatting', message: 'Đang định dạng dữ liệu...' });
-        const commentsTextList = convertCommentsToTextList(mappedComments);
+        // onProgress('step', { step: 'formatting', message: 'Đang định dạng dữ liệu...' });
+        // const commentsTextList = convertCommentsToTextList(mappedComments);
 
-        onProgress('step', { step: 'analyzing', message: 'Đang phân tích với AI...' });
-        const aiResponse = await askQuestion(ContextPrompt + commentsTextList, signal);
+        // onProgress('step', { step: 'analyzing', message: 'Đang phân tích với AI...' });
+        // const aiResponse = await askQuestion(ContextPrompt + commentsTextList, signal);
 
-        return { textList: aiResponse };
+        return { textList: mappedComments };
     } catch (error) {
         // Phân biệt lỗi do hủy chủ động và lỗi thật, để controller xử lý khác nhau
         if (error.name === 'CanceledError' || error.code === 'ERR_CANCELED') {

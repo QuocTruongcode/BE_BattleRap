@@ -15,7 +15,7 @@ async function askQuestion(question, signal) {
     try {
         const response = await axios.post(
             `${AI_SERVER_URL}/post-input-question`,
-            { message: question },
+            { question: question },
             { signal }
         );
 

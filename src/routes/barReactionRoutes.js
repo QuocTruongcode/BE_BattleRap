@@ -15,6 +15,9 @@ router.get("/", barReactionController.getAllBarReactionsController);
 // GET: Lấy theo barID
 router.get("/bar/:barId", barReactionController.getBarReactionsByBarIdController);
 
+// GET: Lấy theo userID và videoID
+router.get("/user/:userId/video/:videoId", barReactionController.getBarReactionsByUserAndVideoController);
+
 // GET: Lấy theo ID
 router.get("/:id", barReactionController.getBarReactionByIdController);
 

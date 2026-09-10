@@ -1,5 +1,12 @@
 const barReactionService = require("../services/barReactionService");
 
+const addUserIdToBarReactions = (barReactions, userId) => {
+    return barReactions.map((barReaction) => ({
+        ...barReaction,
+        userID: userId,
+    }));
+};
+
 // Tạo BarReaction
 const createBarReactionController = async (req, res) => {
     try {
@@ -24,8 +31,9 @@ const createBarReactionsController = async (req, res) => {
         if (!Array.isArray(barReactions) || barReactions.length === 0) {
             return res.status(400).json({ success: false, message: "barReactions phải là một danh sách không rỗng" });
         }
-
-        const items = await barReactionService.createBarReactions(barReactions);
+        console.log("User ID from req.user:", req.user?.userId); // Debugging line
+        const barReactionsWithUser = addUserIdToBarReactions(barReactions, req.user.userId);
+        const items = await barReactionService.createBarReactions(barReactionsWithUser);
         res.status(201).json({ success: true, message: "Tạo nhiều BarReaction thành công", data: items });
     } catch (error) {
         res.status(400).json({ success: false, message: error.message });
@@ -62,6 +70,26 @@ const getBarReactionsByBarIdController = async (req, res) => {
         if (!barId || isNaN(barId)) return res.status(400).json({ success: false, message: "barId phải là một số nguyên hợp lệ" });
 
         const items = await barReactionService.getBarReactionsByBarId(barId);
+        res.status(200).json({ success: true, data: items });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+// Lấy danh sách theo userID và videoID
+const getBarReactionsByUserAndVideoController = async (req, res) => {
+    try {
+        const { userId, videoId } = req.params;
+
+        if (!userId || isNaN(userId)) {
+            return res.status(400).json({ success: false, message: "userId phải là một số nguyên hợp lệ" });
+        }
+
+        if (!videoId || isNaN(videoId)) {
+            return res.status(400).json({ success: false, message: "videoId phải là một số nguyên hợp lệ" });
+        }
+
+        const items = await barReactionService.getBarReactionsByUserAndVideo(userId, videoId);
         res.status(200).json({ success: true, data: items });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
@@ -105,6 +133,7 @@ module.exports = {
     getAllBarReactionsController,
     getBarReactionByIdController,
     getBarReactionsByBarIdController,
+    getBarReactionsByUserAndVideoController,
     updateBarReactionController,
     deleteBarReactionController,
 };

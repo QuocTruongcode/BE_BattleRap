@@ -21,7 +21,11 @@ const barReactionRoutes = require("./routes/barReactionRoutes");
 const authRoutes = require("./routes/authRoutes"); // 👈 route mới
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({
+    limit: "50mb",
+    extended: true
+}));
 
 app.get("/", (req, res) => {
     res.send("DissLens Backend running");
@@ -35,7 +39,7 @@ app.use(authenticate);
 app.use(guestReadOnly);
 
 // nếu không có token hoặc không hợp lệ => trả về 401 Unauthorized
-app.use(requireAuth);
+// app.use(requireAuth);
 
 app.use("/api/videos", videoRoutes);
 app.use("/api/bars", barRoutes);

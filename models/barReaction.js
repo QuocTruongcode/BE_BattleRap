@@ -13,6 +13,12 @@ module.exports = (sequelize, DataTypes) => {
                 targetKey: 'KeyMap',
                 as: 'Reaction'
             });
+
+            BarReaction.belongsTo(models.User, {
+                foreignKey: 'userID',
+                targetKey: 'id',
+                as: 'User'
+            });
         }
     }
     BarReaction.init({
@@ -23,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
         },
         barID: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        userID: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },

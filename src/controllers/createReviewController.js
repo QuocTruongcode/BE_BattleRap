@@ -1,5 +1,5 @@
-const Commentreviewservice = require("../services/commentReviewService");
-const { createJob, cancelJob, removeJob } = require("../services/jobManager");
+const Commentreviewservice = require("../services/Commentreviewservice");
+const { createJob, cancelJob, removeJob } = require("../services/Jobmanager");
 
 const getComments = async (req, res) => {
     const { videoId, jobId: queryJobId } = req.query;
