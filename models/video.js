@@ -20,6 +20,13 @@ module.exports = (sequelize, DataTypes) => {
           EntityType: 'Video'
         }
       });
+
+      Video.belongsToMany(models.Battler, {
+        through: models.VideoBattler,
+        foreignKey: 'videoID',
+        otherKey: 'battlerID',
+        as: 'Battlers'
+      });
     }
   }
   Video.init({

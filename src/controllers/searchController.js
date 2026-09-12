@@ -55,6 +55,45 @@ async function searchVideos(req, res) {
     }
 }
 
+async function searchBattlers(req, res) {
+    try {
+        const { keyword, limit = 5 } = req.query;
+
+        if (!keyword || keyword.trim() === '') {
+            return res.status(400).json({
+                success: false,
+                message: 'Vui lòng nhập từ khóa tìm kiếm battler'
+            });
+        }
+
+        const limitNumber = Number(limit);
+
+        if (!Number.isInteger(limitNumber) || limitNumber < 1) {
+            return res.status(400).json({
+                success: false,
+                message: 'limit phải là số nguyên dương'
+            });
+        }
+
+        const result = await searchService.searchBattlers(keyword.trim(), {
+            limit: limitNumber
+        });
+
+        return res.status(200).json({
+            success: true,
+            ...result
+        });
+    } catch (error) {
+        console.error('Lỗi searchBattlers:', error);
+
+        return res.status(500).json({
+            success: false,
+            message: 'Có lỗi xảy ra khi tìm kiếm battler'
+        });
+    }
+}
+
 module.exports = {
-    searchVideos
+    searchVideos,
+    searchBattlers
 };

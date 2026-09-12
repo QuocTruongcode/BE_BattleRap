@@ -104,6 +104,86 @@ function mergeResults(byTitle, byBarContent) {
         .sort((a, b) => b.score - a.score);
 }
 
+/**
+ * Tìm battler theo RapName và FullName
+ * Không phân biệt hoa thường, ưu tiên khớp gần nhất
+ */
+async function searchBattlers(keyword, { limit = 5 } = {}) {
+    const normalizedKeyword = String(keyword ?? '').trim();
+
+    if (!normalizedKeyword) {
+        return {
+            total: 0,
+            limit,
+            data: []
+        };
+    }
+
+    const likeKeyword = `%${normalizedKeyword}%`;
+    const prefixKeyword = `${normalizedKeyword}%`;
+
+    const results = await sequelize.query(`
+        SELECT
+            b.id,
+            b.RapName,
+            b.FullName,
+            b.Describe,
+            b.image,
+            CASE
+                WHEN LOWER(b.RapName) = LOWER(:keyword) THEN 100
+                WHEN LOWER(b.FullName) = LOWER(:keyword) THEN 100
+                WHEN LOWER(b.RapName) LIKE LOWER(:prefixKeyword) THEN 90
+                WHEN LOWER(b.FullName) LIKE LOWER(:prefixKeyword) THEN 90
+                WHEN LOWER(b.RapName) LIKE LOWER(:likeKeyword) THEN 70
+                WHEN LOWER(b.FullName) LIKE LOWER(:likeKeyword) THEN 70
+                ELSE 50
+            END AS score,
+            CASE
+                WHEN LOWER(b.RapName) LIKE LOWER(:prefixKeyword) THEN 'RapName'
+                WHEN LOWER(b.FullName) LIKE LOWER(:prefixKeyword) THEN 'FullName'
+                WHEN LOWER(b.RapName) LIKE LOWER(:likeKeyword) THEN 'RapName'
+                WHEN LOWER(b.FullName) LIKE LOWER(:likeKeyword) THEN 'FullName'
+                ELSE 'RapName'
+            END AS match_field
+        FROM Battlers b
+        WHERE
+            LOWER(b.RapName) LIKE LOWER(:likeKeyword)
+            OR LOWER(b.FullName) LIKE LOWER(:likeKeyword)
+        ORDER BY
+            CASE
+                WHEN LOWER(b.RapName) = LOWER(:keyword) THEN 0
+                WHEN LOWER(b.FullName) = LOWER(:keyword) THEN 0
+                WHEN LOWER(b.RapName) LIKE LOWER(:prefixKeyword) THEN 1
+                WHEN LOWER(b.FullName) LIKE LOWER(:prefixKeyword) THEN 1
+                WHEN LOWER(b.RapName) LIKE LOWER(:likeKeyword) THEN 2
+                WHEN LOWER(b.FullName) LIKE LOWER(:likeKeyword) THEN 2
+                ELSE 3
+            END,
+            b.RapName ASC
+    `, {
+        replacements: {
+            keyword: normalizedKeyword,
+            likeKeyword,
+            prefixKeyword
+        },
+        type: QueryTypes.SELECT
+    });
+
+    const sorted = [...results].sort((a, b) => {
+        if (b.score !== a.score) {
+            return b.score - a.score;
+        }
+
+        return String(a.RapName || '').localeCompare(String(b.RapName || ''));
+    });
+
+    return {
+        total: sorted.length,
+        limit,
+        data: sorted.slice(0, limit)
+    };
+}
+
 
 /**
  * Hàm chính tìm kiếm video
@@ -153,5 +233,6 @@ async function searchVideos(
 
 
 module.exports = {
-    searchVideos
+    searchVideos,
+    searchBattlers
 };

@@ -18,7 +18,9 @@ const userRoutes = require("./routes/userRoutes");
 const createReviewRouter = require("./routes/createReviewRouter");
 const searchRoutes = require("./routes/searchRoutes");
 const barReactionRoutes = require("./routes/barReactionRoutes");
-const authRoutes = require("./routes/authRoutes"); // 👈 route mới
+const authRoutes = require("./routes/authRoutes");
+const battlerRoutes = require("./routes/battlerRoutes");
+const videoBattlerRoutes = require("./routes/videoBattlerRoutes");
 
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
@@ -47,9 +49,11 @@ app.use("/api/explanations", explanationRoutes);
 app.use("/api/bar-relationships", barRelationshipRoutes);
 app.use("/api/allcodes", allCodeRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/battlers", battlerRoutes);
 app.use("/api/review", createReviewRouter);
 app.use("/api/search", searchRoutes);
 app.use("/api/bar-reactions", barReactionRoutes);
+app.use("/api/video-battlers", videoBattlerRoutes);
 
 app.listen(3001, () => {
     console.log("Server started at port 3001");

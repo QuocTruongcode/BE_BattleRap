@@ -44,6 +44,12 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: 'ReactionType',
         as: 'Reactions'
       });
+
+      Bar.belongsTo(models.Battler, {
+        foreignKey: 'barttelID',
+        targetKey: 'id',
+        as: 'Battler'
+      });
     }
   }
   Bar.init({
