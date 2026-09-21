@@ -9,6 +9,9 @@ router.post("/", barController.createBarController);
 // GET: Lấy tất cả bar theo videoId
 router.get("/video/:videoId", barController.getBarsByVideoIdController);
 
+// GET: Lấy nội dung bar cùng thông tin battler và video
+router.get("/explainBar/:barId", barController.getBarExplanationController);
+
 // GET: Lấy bar theo ID
 router.get("/:id", barController.getBarByIdController);
 

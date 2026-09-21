@@ -21,7 +21,8 @@ const barReactionRoutes = require("./routes/barReactionRoutes");
 const authRoutes = require("./routes/authRoutes");
 const battlerRoutes = require("./routes/battlerRoutes");
 const videoBattlerRoutes = require("./routes/videoBattlerRoutes");
-
+const callLLMRouter = require("./routes/callLLMRouter");
+const tavilyRouter = require("./routes/tavilyRouter");
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({
@@ -54,6 +55,8 @@ app.use("/api/review", createReviewRouter);
 app.use("/api/search", searchRoutes);
 app.use("/api/bar-reactions", barReactionRoutes);
 app.use("/api/video-battlers", videoBattlerRoutes);
+app.use("/api/call-llm", callLLMRouter);
+app.use("/api/search-tavily", tavilyRouter);
 
 app.listen(3001, () => {
     console.log("Server started at port 3001");

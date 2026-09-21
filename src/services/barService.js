@@ -1,4 +1,4 @@
-const { Bar, Video } = require("../../models");
+const { Bar, Battler, Video } = require("../../models");
 
 // Kiểm tra video có tồn tại không
 const checkVideoExists = async (videoId) => {
@@ -88,6 +88,33 @@ const getBarById = async (id) => {
     }
 };
 
+// Lấy nội dung bar cùng thông tin battler và video liên quan
+const getBarExplanation = async (barId) => {
+    try {
+        const bar = await Bar.findByPk(barId);
+        if (!bar) {
+            throw new Error("Bar không tồn tại");
+        }
+
+        const [battler, video] = await Promise.all([
+            bar.barttelID ? Battler.findByPk(bar.barttelID) : null,
+            bar.videoId ? Video.findByPk(bar.videoId) : null,
+        ]);
+
+        return {
+            content: bar.content,
+            RapName: battler?.RapName ?? null,
+            FullName: battler?.FullName ?? null,
+            Describe: battler?.Describe ?? null,
+            title: video?.title ?? null,
+            linkVideo: video?.linkVideo ?? null,
+            review: video?.review ?? null,
+        };
+    } catch (error) {
+        throw new Error(`Lỗi khi lấy nội dung giải thích bar: ${error.message}`);
+    }
+};
+
 // Cập nhật bar
 const updateBar = async (id, barData) => {
     try {
@@ -155,6 +182,7 @@ module.exports = {
     createBar,
     getBarsByVideoId,
     getBarById,
+    getBarExplanation,
     updateBar,
     deleteBar, deleteBarsByVideoId,
 };

@@ -14,7 +14,7 @@ const AI_SERVER_URL = process.env.AI_SERVER_URL;
 async function askQuestion(question, signal) {
     try {
         const response = await axios.post(
-            `${AI_SERVER_URL}/post-input-question`,
+            `${AI_SERVER_URL}/analysis`,
             { question: question },
             { signal }
         );

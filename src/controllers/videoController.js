@@ -4,8 +4,8 @@ const videoService = require("../services/videoService");
 const createVideoController = async (req, res) => {
     try {
         const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore } = req.body;
-        console.log("Check request body: ", req.body)
-        console.log("Check thumbnailUrl: ", thumbnailUrl)
+        // console.log("Check request body: ", req.body)
+        // console.log("Check thumbnailUrl: ", thumbnailUrl)
 
         // Validation - kiểm tra dữ liệu đầu vào
         if (!title || !linkVideo) {

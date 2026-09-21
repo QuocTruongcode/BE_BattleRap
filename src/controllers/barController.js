@@ -93,6 +93,32 @@ const getBarByIdController = async (req, res) => {
     }
 };
 
+// Lấy nội dung bar cùng thông tin battler và video liên quan
+const getBarExplanationController = async (req, res) => {
+    try {
+        const { barId } = req.params;
+
+        if (!barId || !/^\d+$/.test(barId)) {
+            return res.status(400).json({
+                success: false,
+                message: "barId phải là một số nguyên hợp lệ",
+            });
+        }
+
+        const explanation = await barService.getBarExplanation(Number(barId));
+
+        return res.status(200).json({
+            success: true,
+            data: explanation,
+        });
+    } catch (error) {
+        return res.status(404).json({
+            success: false,
+            message: error.message,
+        });
+    }
+};
+
 // Cập nhật bar
 const updateBarController = async (req, res) => {
     try {
@@ -189,6 +215,7 @@ module.exports = {
     createBarController,
     getBarsByVideoIdController,
     getBarByIdController,
+    getBarExplanationController,
     updateBarController,
     deleteBarController,
     deleteBarsByVideoIdController,
