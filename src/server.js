@@ -23,6 +23,10 @@ const battlerRoutes = require("./routes/battlerRoutes");
 const videoBattlerRoutes = require("./routes/videoBattlerRoutes");
 const callLLMRouter = require("./routes/callLLMRouter");
 const tavilyRouter = require("./routes/tavilyRouter");
+const serperImageRoutes = require("./routes/serperImageRoutes");
+const chunkRoutes = require("./routes/chunkRoutes");
+const historyChatBotRoutes = require("./routes/historyChatBotRoutes");
+const aiChatContextRoutes = require("./routes/aiChatContextRoutes");
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({
@@ -57,6 +61,10 @@ app.use("/api/bar-reactions", barReactionRoutes);
 app.use("/api/video-battlers", videoBattlerRoutes);
 app.use("/api/call-llm", callLLMRouter);
 app.use("/api/search-tavily", tavilyRouter);
+app.use("/api/search-images", serperImageRoutes);
+app.use("/api/chunks", chunkRoutes);
+app.use("/api/history-chat-bots", historyChatBotRoutes);
+app.use("/api/ai-chat-context", aiChatContextRoutes);
 
 app.listen(3001, () => {
     console.log("Server started at port 3001");

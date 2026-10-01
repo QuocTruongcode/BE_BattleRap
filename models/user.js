@@ -15,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
                 sourceKey: 'id',
                 as: 'BarReactions'
             });
+
+            User.hasMany(models.historyChatBot, {
+                foreignKey: 'UserID',
+                sourceKey: 'id',
+                as: 'historyChatBots'
+            });
         }
     }
 

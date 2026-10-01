@@ -103,6 +103,8 @@ const getBarExplanation = async (barId) => {
 
         return {
             content: bar.content,
+            videoID: bar.videoId,
+            battlerId: bar.barttelID,
             RapName: battler?.RapName ?? null,
             FullName: battler?.FullName ?? null,
             Describe: battler?.Describe ?? null,

@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     meaning: DataTypes.TEXT,
     reference: DataTypes.TEXT,
     whyGood: DataTypes.TEXT,
+    images: {
+      type: DataTypes.JSON,
+      allowNull: false,
+      defaultValue: [],
+    },
     barId: DataTypes.INTEGER
   }, {
     sequelize,

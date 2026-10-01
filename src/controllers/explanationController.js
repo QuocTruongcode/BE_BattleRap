@@ -1,5 +1,15 @@
 const explanationService = require("../services/explanationService");
 
+const hasValidImagesContainer = (data) => {
+    if (!data || typeof data !== "object") {
+        return false;
+    }
+
+    return data.images === undefined
+        || Array.isArray(data.images)
+        || typeof data.images === "string";
+};
+
 // Tạo explanation (1 hoặc nhiều)
 const createExplanationController = async (req, res) => {
     try {
@@ -18,6 +28,16 @@ const createExplanationController = async (req, res) => {
             return res.status(400).json({
                 success: false,
                 message: "Array explanation không được để trống",
+            });
+        }
+
+        const explanations = Array.isArray(explanationData)
+            ? explanationData
+            : [explanationData];
+        if (explanations.some((explanation) => !hasValidImagesContainer(explanation))) {
+            return res.status(400).json({
+                success: false,
+                message: "images phải là một mảng hoặc chuỗi JSON hợp lệ",
             });
         }
 
@@ -112,6 +132,13 @@ const updateExplanationController = async (req, res) => {
             return res.status(400).json({
                 success: false,
                 message: "Vui lòng cung cấp dữ liệu explanation để cập nhật",
+            });
+        }
+
+        if (!hasValidImagesContainer(explanationData)) {
+            return res.status(400).json({
+                success: false,
+                message: "images phải là một mảng hoặc chuỗi JSON hợp lệ",
             });
         }
 

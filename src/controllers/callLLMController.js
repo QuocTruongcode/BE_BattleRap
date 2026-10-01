@@ -11,28 +11,31 @@ const analysisBarController = async (req, res) => {
             { question: req.body.message }
         );
 
-        const { explanation, keywords } = analysisResponse.data.message;
+        console.log("Check analysisResponse: ", analysisResponse.data.message)
 
-        // Bước 2: Gọi TRỰC TIẾP tavilyService song song cho từng keyword
-        const searchResponses = await Promise.allSettled(
-            keywords.map((keyword) => searchInternetContextService(keyword))
-        );
+        // const { explanation, keywords } = analysisResponse.data.message;
 
-        // Gộp kết quả, giữ lại keyword tương ứng với từng kết quả search
-        const searchResults = searchResponses.map((result, index) => ({
-            keyword: keywords[index],
-            success: result.status === "fulfilled",
-            data: result.status === "fulfilled" ? result.value : null,
-            error: result.status === "rejected" ? result.reason.message : null,
-        }));
+        // // Bước 2: Gọi TRỰC TIẾP tavilyService song song cho từng keyword
+        // const searchResponses = await Promise.allSettled(
+        //     keywords.map((keyword) => searchInternetContextService(keyword))
+        // );
+
+        // // Gộp kết quả, giữ lại keyword tương ứng với từng kết quả search
+        // const searchResults = searchResponses.map((result, index) => ({
+        //     keyword: keywords[index],
+        //     success: result.status === "fulfilled",
+        //     data: result.status === "fulfilled" ? result.value : null,
+        //     error: result.status === "rejected" ? result.reason.message : null,
+        // }));
 
         res.status(200).json({
             success: true,
-            message: {
-                explanation,
-                keywords,
-                searchResults,
-            },
+            // message: {
+            //     explanation,
+            //     keywords,
+            //     searchResults,
+            // },
+            message: analysisResponse.data.message
         });
     } catch (error) {
         res.status(500).json({

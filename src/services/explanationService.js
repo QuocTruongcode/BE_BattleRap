@@ -1,5 +1,45 @@
 const { Explanation, Bar } = require("../../models");
 
+const normalizeImages = (images) => {
+    if (images === undefined) {
+        return undefined;
+    }
+
+    let parsedImages = images;
+    if (typeof images === "string") {
+        try {
+            parsedImages = JSON.parse(images);
+        } catch (error) {
+            throw new Error("images phải là một mảng hoặc chuỗi JSON hợp lệ");
+        }
+    }
+
+    if (!Array.isArray(parsedImages)) {
+        throw new Error("images phải là một mảng");
+    }
+
+    return parsedImages.map((image, index) => {
+        if (!image || typeof image !== "object" || Array.isArray(image)) {
+            throw new Error(`images[${index}] phải là một object`);
+        }
+
+        const imageFields = ["keyword", "title", "imageUrl", "thumbnailUrl", "link"];
+        for (const field of imageFields) {
+            if (typeof image[field] !== "string" || image[field].trim() === "") {
+                throw new Error(`images[${index}].${field} là bắt buộc và phải là chuỗi`);
+            }
+        }
+
+        return {
+            keyword: image.keyword.trim(),
+            title: image.title.trim(),
+            imageUrl: image.imageUrl.trim(),
+            thumbnailUrl: image.thumbnailUrl.trim(),
+            link: image.link.trim(),
+        };
+    });
+};
+
 // Kiểm tra bar có tồn tại không
 const checkBarExists = async (barId) => {
     const bar = await Bar.findByPk(barId);
@@ -11,6 +51,8 @@ const checkBarExists = async (barId) => {
 // Tạo 1 explanation hoặc nhiều explanation
 const createExplanation = async (explanationData) => {
     try {
+        console.log("check explanationData: ", explanationData)
+
         // Kiểm tra xem là array hay object
         if (Array.isArray(explanationData)) {
             // Nhiều explanation
@@ -28,6 +70,7 @@ const createExplanation = async (explanationData) => {
                     meaning: explanation.meaning || null,
                     reference: explanation.reference || null,
                     whyGood: explanation.whyGood || null,
+                    images: normalizeImages(explanation.images) ?? [],
                     barId: explanation.barId,
                 });
                 explanations.push(newExplanation);
@@ -46,6 +89,7 @@ const createExplanation = async (explanationData) => {
                 meaning: explanationData.meaning || null,
                 reference: explanationData.reference || null,
                 whyGood: explanationData.whyGood || null,
+                images: normalizeImages(explanationData.images) ?? [],
                 barId: explanationData.barId,
             });
             return explanation;
@@ -83,6 +127,7 @@ const getExplanationById = async (id) => {
 // Cập nhật explanation
 const updateExplanation = async (id, explanationData) => {
     try {
+        console.log("check explanationData: ", explanationData)
         const explanation = await Explanation.findByPk(id);
         if (!explanation) {
             throw new Error("Explanation không tồn tại");
@@ -97,6 +142,9 @@ const updateExplanation = async (id, explanationData) => {
             meaning: explanationData.meaning !== undefined ? explanationData.meaning : explanation.meaning,
             reference: explanationData.reference !== undefined ? explanationData.reference : explanation.reference,
             whyGood: explanationData.whyGood !== undefined ? explanationData.whyGood : explanation.whyGood,
+            images: explanationData.images !== undefined
+                ? normalizeImages(explanationData.images)
+                : explanation.images,
             barId: explanationData.barId !== undefined ? explanationData.barId : explanation.barId,
         });
         return updatedExplanation;

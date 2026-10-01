@@ -21,6 +21,8 @@ const searchInternetContextService = async (message, maxResults = 3) => {
             query: message,
             search_depth: "basic",   // đủ dùng, tiết kiệm credit
             include_answer: true,    // Tavily tự tổng hợp 1 câu trả lời chung
+            include_images: true,          // <-- thêm dòng này
+            include_image_descriptions: true, // <-- tùy chọn, có mô tả ảnh kèm theo
             max_results: maxResults,
         },
         {
@@ -31,7 +33,7 @@ const searchInternetContextService = async (message, maxResults = 3) => {
         }
     );
 
-    const { answer, results } = response.data;
+    const { answer, results, images } = response.data;
 
     const sources = (results || []).map((r) => ({
         title: r.title,
@@ -46,6 +48,8 @@ const searchInternetContextService = async (message, maxResults = 3) => {
         answer: answer || "",
         context,
         sources,
+        images: images || [], // <-- trả thêm ra ngoài
+
     };
 };
 
