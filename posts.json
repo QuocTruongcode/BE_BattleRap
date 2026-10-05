@@ -1,0 +1,674 @@
+[
+  {
+    "facebookUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN",
+    "postId": "122231426960548003",
+    "pageName": "grabfanthang9",
+    "url": "https://www.facebook.com/grabfanthang9/posts/pfbid02xnDJV2T2HMDmWm5bUhoTw8qNVKQ2HVzTEZc5ZrbeswJPjG1GVH8GYmaN6iByEwkMl",
+    "time": "2026-10-02T05:15:29.000Z",
+    "timestamp": 1790918129,
+    "user": {
+      "id": "61566440117452",
+      "name": "Grab Fan Tháng 9",
+      "profileUrl": "https://www.facebook.com/61566440117452",
+      "profilePic": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s50x50&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD"
+    },
+    "collaborators": [
+      {
+        "__typename": "User",
+        "__isEntity": "User",
+        "__isActor": "User",
+        "id": "61566440117452",
+        "url": "https://www.facebook.com/grabfanthang9",
+        "profile_url": "https://www.facebook.com/grabfanthang9",
+        "short_name": "Grab Fan Tháng 9",
+        "work_info": null,
+        "__module_operation_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink_user$normalization.graphql"
+        },
+        "__module_component_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink.react"
+        },
+        "work_foreign_entity_info": null,
+        "is_verified": true,
+        "mobileUrl": "https://m.facebook.com/grabfanthang9/",
+        "__isNode": "User"
+      },
+      {
+        "__typename": "User",
+        "__isEntity": "User",
+        "__isActor": "User",
+        "id": "61572949840463",
+        "url": "https://www.facebook.com/rapfanthamthinh",
+        "profile_url": "https://www.facebook.com/rapfanthamthinh",
+        "short_name": "Rap Fan Thám Thính",
+        "work_info": null,
+        "__module_operation_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink_user$normalization.graphql"
+        },
+        "__module_component_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink.react"
+        },
+        "work_foreign_entity_info": null,
+        "is_verified": false,
+        "mobileUrl": "https://m.facebook.com/rapfanthamthinh/",
+        "__isNode": "User"
+      }
+    ],
+    "text": "Album HVL trở lại trên Spotify với đủ 30 bài",
+    "link": "https://www.tiktok.com/@grabfanthang9",
+    "likes": 187,
+    "comments": 2,
+    "shares": 2,
+    "topReactionsCount": 2,
+    "media": [
+      {
+        "thumbnail": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.99422-6/830541601_1530780392103563_4574770700830629256_n.png?stp=dst-jpg_tt6&cstp=mx2001x2001&ctp=p526x296&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=GJVb_IpK31AQ7kNvwEOmfv7&_nc_oc=AdqN110y71h3xDJW4rvH6z3HUtEAcap3FqFoj4GUTEWnrtBcX8XHHSzF_tzYyhCcLYulAvfHN5k1kQSXcS0B4q_3&_nc_zt=14&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQODnyPfuRUh9AYM3YbdTKEF2diRfAu_QGC0oVoqn_aafQ&oe=6AC6C559",
+        "__typename": "Photo",
+        "__isMedia": "Photo",
+        "accent_color": "FF581010",
+        "photo_product_tags": [],
+        "photo_image": {
+          "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.99422-6/830541601_1530780392103563_4574770700830629256_n.png?stp=dst-jpg_tt6&cstp=mx2001x2001&ctp=p526x296&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=GJVb_IpK31AQ7kNvwEOmfv7&_nc_oc=AdqN110y71h3xDJW4rvH6z3HUtEAcap3FqFoj4GUTEWnrtBcX8XHHSzF_tzYyhCcLYulAvfHN5k1kQSXcS0B4q_3&_nc_zt=14&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQODnyPfuRUh9AYM3YbdTKEF2diRfAu_QGC0oVoqn_aafQ&oe=6AC6C559",
+          "height": 526,
+          "width": 526
+        },
+        "url": "https://www.facebook.com/photo/?fbid=122231426804548003&set=a.122111173952548003",
+        "id": "122231426804548003",
+        "feedback": {
+          "can_viewer_comment": false,
+          "id": "ZmVlZGJhY2s6MTIyMjMxNDI2OTYwNTQ4MDAz"
+        },
+        "ocrText": "May be an image of text"
+      }
+    ],
+    "feedbackId": "ZmVlZGJhY2s6MTIyMjMxNDI2OTYwNTQ4MDAz",
+    "reactionLikeCount": 141,
+    "reactionLoveCount": 46,
+    "paidPartnership": false,
+    "topComments": [
+      {
+        "commentUrl": "https://www.facebook.com/grabfanthang9/posts/pfbid02xnDJV2T2HMDmWm5bUhoTw8qNVKQ2HVzTEZc5ZrbeswJPjG1GVH8GYmaN6iByEwkMl?comment_id=1840924920395451",
+        "commentId": "1840924920395451",
+        "id": "Y29tbWVudDoxMjIyMzE0MjY5NjA1NDgwMDNfMTg0MDkyNDkyMDM5NTQ1MQ==",
+        "feedbackId": "ZmVlZGJhY2s6MTIyMjMxNDI2OTYwNTQ4MDAzXzE4NDA5MjQ5MjAzOTU0NTE=",
+        "date": "2026-10-02T05:39:33.000Z",
+        "text": "Group Shitpost cùng Grab Fan Tháng 9: https://www.facebook.com/groups/1481269017373754\nGroup Cộng đồng Grab Việt Underground: https://www.facebook.com/groups/8276007849195211/\nTikTok: https://www.tiktok.com/@grabfanthang9\nWebsite: https://grabfanthang9media.vercel.app/",
+        "attachments": [
+          {
+            "url": "https://www.facebook.com/groups/shitpostgft9/",
+            "source": null,
+            "title_with_entities": {
+              "text": "Shitpost cùng Grab Fan Tháng 9"
+            },
+            "target": {
+              "__typename": "Group",
+              "id": "1481269017373754"
+            },
+            "action_links": [],
+            "media": {
+              "__typename": "ProfilePicAttachmentMedia",
+              "fallback_image": {
+                "height": 100,
+                "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.99422-6/724119739_1016660070765717_2924321436378851755_n.png?stp=c439.0.1123.1123a_dst-jpg_tt6&cstp=mx1123x1123&ctp=s100x100&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=1760b9&_nc_ohc=gWAYYWpnCswQ7kNvwFEnj33&_nc_oc=AdoGcjS_rqwFPJJjE62nJ8a_ZbSj7wX_oPcv5NIaUt19IEkNCsv-byzx6GdQj0uaRof-ibDk2mbrCkJZ7CR9KVpi&_nc_zt=14&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQMviOGth7aLoF5Kd1RUpg8htu3ht5w6cRIA4NSMjmueqw&oe=6AC6D15A",
+                "width": 100
+              },
+              "is_playable": false
+            },
+            "tracking": null
+          }
+        ],
+        "author": {
+          "__typename": "User",
+          "id": "61566440117452",
+          "name": "Grab Fan Tháng 9",
+          "__isActor": "User",
+          "profile_picture_depth_0": {
+            "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s32x32&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD"
+          },
+          "profile_picture_depth_1": {
+            "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s24x24&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD"
+          },
+          "gender": "UNKNOWN",
+          "__isEntity": "User",
+          "url": "https://www.facebook.com/grabfanthang9",
+          "work_info": null,
+          "is_verified": true,
+          "short_name": "Grab Fan Tháng 9",
+          "subscribe_status": "CANNOT_SUBSCRIBE"
+        },
+        "profileUrl": "https://www.facebook.com/grabfanthang9",
+        "profilePicture": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s32x32&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD",
+        "profileId": "61566440117452",
+        "profileName": "Grab Fan Tháng 9",
+        "likesCount": "0",
+        "threadingDepth": 0
+      }
+    ],
+    "topLevelUrl": "https://www.facebook.com/61566440117452/posts/122231426960548003",
+    "facebookId": "61566440117452",
+    "pageAdLibrary": {
+      "id": "389752807563648",
+      "pamv_comms_data": null
+    },
+    "inputUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN"
+  },
+  {
+    "facebookUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN",
+    "postId": "122231419406548003",
+    "pageName": "grabfanthang9",
+    "url": "https://www.facebook.com/grabfanthang9/posts/pfbid032p1o6STQLqKH3CH41xW1kVbZNDRrszRZ5b7LFnjJuqJCYoS7i48iBDvSozmnEDAl",
+    "time": "2026-10-02T04:06:50.000Z",
+    "timestamp": 1790914010,
+    "user": {
+      "id": "61566440117452",
+      "name": "Grab Fan Tháng 9",
+      "profileUrl": "https://www.facebook.com/61566440117452",
+      "profilePic": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s50x50&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD"
+    },
+    "collaborators": [],
+    "text": "",
+    "link": "https://www.tiktok.com/@grabfanthang9",
+    "likes": 390,
+    "comments": 27,
+    "shares": 2,
+    "topReactionsCount": 5,
+    "media": [
+      {
+        "thumbnail": "https://scontent.flas1-1.fna.fbcdn.net/v/t39.99422-6/831699455_1820125186076742_433615054222474083_n.png?stp=dst-jpg_tt6&cstp=mx1362x1001&ctp=s720x720&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=txoq8IvVsSYQ7kNvwH0Gk_B&_nc_oc=Adq4KvZBqzxUMGOkKgGK0TLRMUmip_p3NH6_ecRsUd5x62Q4-vRzDWYmHugrCEFY1HBNGmxip_I_YRkZ0e355OCZ&_nc_zt=14&_nc_ht=scontent.flas1-1.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQOtRYMuylAWPU4jrrlCvWQBcUDAN45XDf3Fbtu1nCnMVg&oe=6AC6CC92",
+        "__typename": "Photo",
+        "__isMedia": "Photo",
+        "accent_color": "FF252728",
+        "photo_product_tags": [],
+        "photo_image": {
+          "uri": "https://scontent.flas1-1.fna.fbcdn.net/v/t39.99422-6/831699455_1820125186076742_433615054222474083_n.png?stp=dst-jpg_tt6&cstp=mx1362x1001&ctp=s720x720&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=txoq8IvVsSYQ7kNvwH0Gk_B&_nc_oc=Adq4KvZBqzxUMGOkKgGK0TLRMUmip_p3NH6_ecRsUd5x62Q4-vRzDWYmHugrCEFY1HBNGmxip_I_YRkZ0e355OCZ&_nc_zt=14&_nc_ht=scontent.flas1-1.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQOtRYMuylAWPU4jrrlCvWQBcUDAN45XDf3Fbtu1nCnMVg&oe=6AC6CC92",
+          "height": 529,
+          "width": 720
+        },
+        "url": "https://www.facebook.com/photo/?fbid=122231419376548003&set=a.122111173952548003",
+        "id": "122231419376548003",
+        "feedback": {
+          "can_viewer_comment": false,
+          "id": "ZmVlZGJhY2s6MTIyMjMxNDE5NDA2NTQ4MDAz"
+        },
+        "ocrText": "May be an image of one or more people and text"
+      }
+    ],
+    "feedbackId": "ZmVlZGJhY2s6MTIyMjMxNDE5NDA2NTQ4MDAz",
+    "reactionLikeCount": 321,
+    "reactionHahaCount": 39,
+    "reactionLoveCount": 27,
+    "reactionWowCount": 2,
+    "reactionCareCount": 1,
+    "paidPartnership": false,
+    "topComments": [
+      {
+        "commentUrl": "https://www.facebook.com/grabfanthang9/posts/pfbid032p1o6STQLqKH3CH41xW1kVbZNDRrszRZ5b7LFnjJuqJCYoS7i48iBDvSozmnEDAl?comment_id=1110661221560948",
+        "commentId": "1110661221560948",
+        "id": "Y29tbWVudDoxMjIyMzE0MTk0MDY1NDgwMDNfMTExMDY2MTIyMTU2MDk0OA==",
+        "feedbackId": "ZmVlZGJhY2s6MTIyMjMxNDE5NDA2NTQ4MDAzXzExMTA2NjEyMjE1NjA5NDg=",
+        "date": "2026-10-02T05:11:24.000Z",
+        "text": "Group Shitpost cùng Grab Fan Tháng 9: https://www.facebook.com/groups/1481269017373754\nGroup Cộng đồng Grab Việt Underground: https://www.facebook.com/groups/8276007849195211/\nTikTok: https://www.tiktok.com/@grabfanthang9\nWebsite: https://grabfanthang9media.vercel.app/",
+        "attachments": [
+          {
+            "url": "https://www.facebook.com/groups/shitpostgft9/",
+            "source": null,
+            "title_with_entities": {
+              "text": "Shitpost cùng Grab Fan Tháng 9"
+            },
+            "target": {
+              "__typename": "Group",
+              "id": "1481269017373754"
+            },
+            "action_links": [],
+            "media": {
+              "__typename": "ProfilePicAttachmentMedia",
+              "fallback_image": {
+                "height": 100,
+                "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.99422-6/724119739_1016660070765717_2924321436378851755_n.png?stp=c439.0.1123.1123a_dst-jpg_tt6&cstp=mx1123x1123&ctp=s100x100&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=1760b9&_nc_ohc=gWAYYWpnCswQ7kNvwFEnj33&_nc_oc=AdoGcjS_rqwFPJJjE62nJ8a_ZbSj7wX_oPcv5NIaUt19IEkNCsv-byzx6GdQj0uaRof-ibDk2mbrCkJZ7CR9KVpi&_nc_zt=14&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQMviOGth7aLoF5Kd1RUpg8htu3ht5w6cRIA4NSMjmueqw&oe=6AC6D15A",
+                "width": 100
+              },
+              "is_playable": false
+            },
+            "tracking": null
+          }
+        ],
+        "author": {
+          "__typename": "User",
+          "id": "61566440117452",
+          "name": "Grab Fan Tháng 9",
+          "__isActor": "User",
+          "profile_picture_depth_0": {
+            "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s32x32&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD"
+          },
+          "profile_picture_depth_1": {
+            "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s24x24&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD"
+          },
+          "gender": "UNKNOWN",
+          "__isEntity": "User",
+          "url": "https://www.facebook.com/grabfanthang9",
+          "work_info": null,
+          "is_verified": true,
+          "short_name": "Grab Fan Tháng 9",
+          "subscribe_status": "CANNOT_SUBSCRIBE"
+        },
+        "profileUrl": "https://www.facebook.com/grabfanthang9",
+        "profilePicture": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s32x32&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD",
+        "profileId": "61566440117452",
+        "profileName": "Grab Fan Tháng 9",
+        "likesCount": "0",
+        "threadingDepth": 0
+      }
+    ],
+    "topLevelUrl": "https://www.facebook.com/61566440117452/posts/122231419406548003",
+    "facebookId": "61566440117452",
+    "pageAdLibrary": {
+      "id": "389752807563648",
+      "pamv_comms_data": null
+    },
+    "inputUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN"
+  },
+  {
+    "facebookUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN",
+    "postId": "122231317256548003",
+    "pageName": "grabfanthang9",
+    "url": "https://www.facebook.com/grabfanthang9/posts/pfbid0korc5gk797fBE8YWcNn4B8jk1N5EhyEUdeLaa2jAb7yCHbUncrCSLKvGW9mZXHbcl",
+    "time": "2026-10-01T11:21:15.000Z",
+    "timestamp": 1790853675,
+    "user": {
+      "id": "61566440117452",
+      "name": "Grab Fan Tháng 9",
+      "profileUrl": "https://www.facebook.com/61566440117452",
+      "profilePic": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s50x50&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD"
+    },
+    "collaborators": [
+      {
+        "__typename": "User",
+        "__isEntity": "User",
+        "__isActor": "User",
+        "id": "61566440117452",
+        "url": "https://www.facebook.com/grabfanthang9",
+        "profile_url": "https://www.facebook.com/grabfanthang9",
+        "short_name": "Grab Fan Tháng 9",
+        "work_info": null,
+        "__module_operation_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink_user$normalization.graphql"
+        },
+        "__module_component_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink.react"
+        },
+        "work_foreign_entity_info": null,
+        "is_verified": true,
+        "mobileUrl": "https://m.facebook.com/grabfanthang9/",
+        "__isNode": "User"
+      },
+      {
+        "__typename": "User",
+        "__isEntity": "User",
+        "__isActor": "User",
+        "id": "61572949840463",
+        "url": "https://www.facebook.com/rapfanthamthinh",
+        "profile_url": "https://www.facebook.com/rapfanthamthinh",
+        "short_name": "Rap Fan Thám Thính",
+        "work_info": null,
+        "__module_operation_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink_user$normalization.graphql"
+        },
+        "__module_component_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink.react"
+        },
+        "work_foreign_entity_info": null,
+        "is_verified": false,
+        "mobileUrl": "https://m.facebook.com/rapfanthamthinh/",
+        "__isNode": "User"
+      }
+    ],
+    "text": "Không còn CR7",
+    "link": "https://www.tiktok.com/@grabfanthang9",
+    "likes": 307,
+    "comments": 7,
+    "shares": 8,
+    "topReactionsCount": 4,
+    "media": [
+      {
+        "thumbnail": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.99422-6/828677722_28706527938966686_6842344804390227237_n.png?stp=dst-jpg_tt6&cstp=mx1086x1090&ctp=p526x296&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=_9iyAF8dWdoQ7kNvwGRRXc_&_nc_oc=AdrF3PWL5jxuFrg13wvGpsxMbxWuE_l3eIj2KwFcuN3SOBZ_EyGl7xFTPxQKHC9bQ2AlcRSe-58VOBMhBSeWC4aH&_nc_zt=14&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQNgduVv5y-Bh5O8wLjyivzWqaB5FJkI5THEBiAjEj9Sxw&oe=6AC6DD5C",
+        "__typename": "Photo",
+        "__isMedia": "Photo",
+        "accent_color": "FF000000",
+        "photo_product_tags": [],
+        "photo_image": {
+          "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.99422-6/828677722_28706527938966686_6842344804390227237_n.png?stp=dst-jpg_tt6&cstp=mx1086x1090&ctp=p526x296&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=_9iyAF8dWdoQ7kNvwGRRXc_&_nc_oc=AdrF3PWL5jxuFrg13wvGpsxMbxWuE_l3eIj2KwFcuN3SOBZ_EyGl7xFTPxQKHC9bQ2AlcRSe-58VOBMhBSeWC4aH&_nc_zt=14&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQNgduVv5y-Bh5O8wLjyivzWqaB5FJkI5THEBiAjEj9Sxw&oe=6AC6DD5C",
+          "height": 528,
+          "width": 526
+        },
+        "url": "https://www.facebook.com/photo/?fbid=122231317184548003&set=a.122111173952548003",
+        "id": "122231317184548003",
+        "feedback": {
+          "can_viewer_comment": false,
+          "id": "ZmVlZGJhY2s6MTIyMjMxMzE3MjU2NTQ4MDAz"
+        },
+        "ocrText": "May be an image of text"
+      }
+    ],
+    "feedbackId": "ZmVlZGJhY2s6MTIyMjMxMzE3MjU2NTQ4MDAz",
+    "reactionLikeCount": 238,
+    "reactionHahaCount": 43,
+    "reactionLoveCount": 25,
+    "reactionSadCount": 1,
+    "paidPartnership": false,
+    "topComments": [
+      {
+        "commentUrl": "https://www.facebook.com/grabfanthang9/posts/pfbid0korc5gk797fBE8YWcNn4B8jk1N5EhyEUdeLaa2jAb7yCHbUncrCSLKvGW9mZXHbcl?comment_id=1414036246834932",
+        "commentId": "1414036246834932",
+        "id": "Y29tbWVudDoxMjIyMzEzMTcyNTY1NDgwMDNfMTQxNDAzNjI0NjgzNDkzMg==",
+        "feedbackId": "ZmVlZGJhY2s6MTIyMjMxMzE3MjU2NTQ4MDAzXzE0MTQwMzYyNDY4MzQ5MzI=",
+        "date": "2026-10-01T11:22:13.000Z",
+        "text": "Group Shitpost cùng Grab Fan Tháng 9: https://www.facebook.com/groups/1481269017373754\nGroup Cộng đồng Grab Việt Underground: https://www.facebook.com/groups/8276007849195211/\nTikTok: https://www.tiktok.com/@grabfanthang9\nWebsite: https://grabfanthang9media.vercel.app/",
+        "attachments": [
+          {
+            "url": "https://www.facebook.com/groups/shitpostgft9/",
+            "source": null,
+            "title_with_entities": {
+              "text": "Shitpost cùng Grab Fan Tháng 9"
+            },
+            "target": {
+              "__typename": "Group",
+              "id": "1481269017373754"
+            },
+            "action_links": [],
+            "media": {
+              "__typename": "ProfilePicAttachmentMedia",
+              "fallback_image": {
+                "height": 100,
+                "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.99422-6/724119739_1016660070765717_2924321436378851755_n.png?stp=c439.0.1123.1123a_dst-jpg_tt6&cstp=mx1123x1123&ctp=s100x100&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=1760b9&_nc_ohc=gWAYYWpnCswQ7kNvwFEnj33&_nc_oc=AdoGcjS_rqwFPJJjE62nJ8a_ZbSj7wX_oPcv5NIaUt19IEkNCsv-byzx6GdQj0uaRof-ibDk2mbrCkJZ7CR9KVpi&_nc_zt=14&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQMviOGth7aLoF5Kd1RUpg8htu3ht5w6cRIA4NSMjmueqw&oe=6AC6D15A",
+                "width": 100
+              },
+              "is_playable": false
+            },
+            "tracking": null
+          }
+        ],
+        "author": {
+          "__typename": "User",
+          "id": "61566440117452",
+          "name": "Grab Fan Tháng 9",
+          "__isActor": "User",
+          "profile_picture_depth_0": {
+            "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s32x32&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD"
+          },
+          "profile_picture_depth_1": {
+            "uri": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s24x24&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD"
+          },
+          "gender": "UNKNOWN",
+          "__isEntity": "User",
+          "url": "https://www.facebook.com/grabfanthang9",
+          "work_info": null,
+          "is_verified": true,
+          "short_name": "Grab Fan Tháng 9",
+          "subscribe_status": "CANNOT_SUBSCRIBE"
+        },
+        "profileUrl": "https://www.facebook.com/grabfanthang9",
+        "profilePicture": "https://scontent.flas1-2.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s32x32&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwGAgLTT&_nc_oc=Ado66RTR4xmgbGwVnhzN7bsdsJHemHwkboZYSst425-VgRy0OdftIR4oZjhCvceCD1ps5NqgIC0vxD9wDckRIPlC&_nc_zt=24&_nc_ht=scontent.flas1-2.fna&_nc_gid=drgI_UaN_dXX66K7UqHyKg&_nc_ss=70289&oh=00_AQN8F9S1UvO1S7DtO41bA93mfdfUdxr6zKTaXrNAsD3vwA&oe=6AC6CEAD",
+        "profileId": "61566440117452",
+        "profileName": "Grab Fan Tháng 9",
+        "likesCount": "0",
+        "threadingDepth": 0
+      }
+    ],
+    "topLevelUrl": "https://www.facebook.com/61566440117452/posts/122231317256548003",
+    "facebookId": "61566440117452",
+    "pageAdLibrary": {
+      "id": "389752807563648",
+      "pamv_comms_data": null
+    },
+    "inputUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN"
+  },
+  {
+    "facebookUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN",
+    "postId": "122231300186548003",
+    "pageName": "grabfanthang9",
+    "url": "https://www.facebook.com/grabfanthang9/posts/pfbid0nQFKw9FSYSSusGHGB82EY4XWLJeewHiN41nhNkDvZuLH1bhDdjrXVoYhU7scc3jFl",
+    "time": "2026-10-01T08:28:24.000Z",
+    "timestamp": 1790843304,
+    "user": {
+      "id": "61566440117452",
+      "name": "Grab Fan Tháng 9",
+      "profileUrl": "https://www.facebook.com/61566440117452",
+      "profilePic": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s50x50&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwE8z1NP&_nc_oc=AdpAxo_J11jmIQvuQRZ8R78xa-7m0vN5haGYQUMwDgHcswMdSazaWHREvGeNfjN12T4&_nc_zt=24&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQNCdBcHAa6z8lBfR2txkDVe4jkU8vqJPL2KsD82jUB4Bw&oe=6AC6CEAD"
+    },
+    "collaborators": [
+      {
+        "__typename": "User",
+        "__isEntity": "User",
+        "__isActor": "User",
+        "id": "61566440117452",
+        "url": "https://www.facebook.com/grabfanthang9",
+        "profile_url": "https://www.facebook.com/grabfanthang9",
+        "short_name": "Grab Fan Tháng 9",
+        "work_info": null,
+        "__module_operation_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink_user$normalization.graphql"
+        },
+        "__module_component_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink.react"
+        },
+        "work_foreign_entity_info": null,
+        "is_verified": true,
+        "mobileUrl": "https://m.facebook.com/grabfanthang9/",
+        "__isNode": "User"
+      },
+      {
+        "__typename": "User",
+        "__isEntity": "User",
+        "__isActor": "User",
+        "id": "61572949840463",
+        "url": "https://www.facebook.com/rapfanthamthinh",
+        "profile_url": "https://www.facebook.com/rapfanthamthinh",
+        "short_name": "Rap Fan Thám Thính",
+        "work_info": null,
+        "__module_operation_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink_user$normalization.graphql"
+        },
+        "__module_component_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink.react"
+        },
+        "work_foreign_entity_info": null,
+        "is_verified": false,
+        "mobileUrl": "https://m.facebook.com/rapfanthamthinh/",
+        "__isNode": "User"
+      }
+    ],
+    "text": "Diss track \"Cần cẩu\" của Phúc Du đạt 1M views trên YouTube.",
+    "link": "https://www.tiktok.com/@grabfanthang9",
+    "likes": 197,
+    "comments": 26,
+    "shares": 3,
+    "topReactionsCount": 3,
+    "media": [
+      {
+        "thumbnail": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.99422-6/831196019_2559715917863278_4784295885198576692_n.png?stp=dst-jpg_tt6&cstp=mx2001x2001&ctp=p526x296&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=bQ2Vnjlaqa4Q7kNvwFFc2ay&_nc_oc=AdoN7DJCCxnnvh2taKFmX-I4uZVvk0y79ZT8ASiPhuCYVAqUNPIl9ZYCLbAorEysJd0&_nc_zt=14&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQP7phyM5bIdpHwVNzErEYA6z7Z1_sIFCt-eVmWO4IoVjw&oe=6AC6DBC8",
+        "__typename": "Photo",
+        "__isMedia": "Photo",
+        "accent_color": "FFEAF3B0",
+        "photo_product_tags": [],
+        "photo_image": {
+          "uri": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.99422-6/831196019_2559715917863278_4784295885198576692_n.png?stp=dst-jpg_tt6&cstp=mx2001x2001&ctp=p526x296&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=bQ2Vnjlaqa4Q7kNvwFFc2ay&_nc_oc=AdoN7DJCCxnnvh2taKFmX-I4uZVvk0y79ZT8ASiPhuCYVAqUNPIl9ZYCLbAorEysJd0&_nc_zt=14&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQP7phyM5bIdpHwVNzErEYA6z7Z1_sIFCt-eVmWO4IoVjw&oe=6AC6DBC8",
+          "height": 526,
+          "width": 526
+        },
+        "url": "https://www.facebook.com/photo/?fbid=122231300156548003&set=a.122111173952548003",
+        "id": "122231300156548003",
+        "feedback": {
+          "can_viewer_comment": false,
+          "id": "ZmVlZGJhY2s6MTIyMjMxMzAwMTg2NTQ4MDAz"
+        },
+        "ocrText": "May be an image of text"
+      }
+    ],
+    "feedbackId": "ZmVlZGJhY2s6MTIyMjMxMzAwMTg2NTQ4MDAz",
+    "reactionLikeCount": 158,
+    "reactionHahaCount": 34,
+    "reactionLoveCount": 5,
+    "paidPartnership": false,
+    "topComments": [
+      {
+        "commentUrl": "https://www.facebook.com/grabfanthang9/posts/pfbid0nQFKw9FSYSSusGHGB82EY4XWLJeewHiN41nhNkDvZuLH1bhDdjrXVoYhU7scc3jFl?comment_id=1092075643571299",
+        "commentId": "1092075643571299",
+        "id": "Y29tbWVudDoxMjIyMzEzMDAxODY1NDgwMDNfMTA5MjA3NTY0MzU3MTI5OQ==",
+        "feedbackId": "ZmVlZGJhY2s6MTIyMjMxMzAwMTg2NTQ4MDAzXzEwOTIwNzU2NDM1NzEyOTk=",
+        "date": "2026-10-01T08:30:36.000Z",
+        "text": "Group Shitpost cùng Grab Fan Tháng 9: https://www.facebook.com/groups/1481269017373754\nGroup Cộng đồng Grab Việt Underground: https://www.facebook.com/groups/8276007849195211/\nTikTok: https://www.tiktok.com/@grabfanthang9\nWebsite: https://grabfanthang9media.vercel.app/",
+        "attachments": [
+          {
+            "url": "https://www.facebook.com/groups/shitpostgft9/",
+            "source": null,
+            "title_with_entities": {
+              "text": "Shitpost cùng Grab Fan Tháng 9"
+            },
+            "target": {
+              "__typename": "Group",
+              "id": "1481269017373754"
+            },
+            "action_links": [],
+            "media": {
+              "__typename": "ProfilePicAttachmentMedia",
+              "fallback_image": {
+                "height": 100,
+                "uri": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.99422-6/724119739_1016660070765717_2924321436378851755_n.png?stp=c439.0.1123.1123a_dst-jpg_tt6&cstp=mx1123x1123&ctp=s100x100&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=1760b9&_nc_ohc=gWAYYWpnCswQ7kNvwHF5p9k&_nc_oc=Adq6zBBlR3_vxbnNc3l7xuVFLIpKXQTuXuLG1LwzCy2HKwdm4L2Cct5pM7ApWEtF6OQ&_nc_zt=14&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQM19N3NwvbjYY8Ugkg4qNjK9G9IYq38VfxV5g4I7jzTqw&oe=6AC6D15A",
+                "width": 100
+              },
+              "is_playable": false
+            },
+            "tracking": null
+          }
+        ],
+        "author": {
+          "__typename": "User",
+          "id": "61566440117452",
+          "name": "Grab Fan Tháng 9",
+          "__isActor": "User",
+          "profile_picture_depth_0": {
+            "uri": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s32x32&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwE8z1NP&_nc_oc=AdpAxo_J11jmIQvuQRZ8R78xa-7m0vN5haGYQUMwDgHcswMdSazaWHREvGeNfjN12T4&_nc_zt=24&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQNCdBcHAa6z8lBfR2txkDVe4jkU8vqJPL2KsD82jUB4Bw&oe=6AC6CEAD"
+          },
+          "profile_picture_depth_1": {
+            "uri": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s24x24&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwE8z1NP&_nc_oc=AdpAxo_J11jmIQvuQRZ8R78xa-7m0vN5haGYQUMwDgHcswMdSazaWHREvGeNfjN12T4&_nc_zt=24&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQNCdBcHAa6z8lBfR2txkDVe4jkU8vqJPL2KsD82jUB4Bw&oe=6AC6CEAD"
+          },
+          "gender": "UNKNOWN",
+          "__isEntity": "User",
+          "url": "https://www.facebook.com/grabfanthang9",
+          "work_info": null,
+          "is_verified": true,
+          "short_name": "Grab Fan Tháng 9",
+          "subscribe_status": "CANNOT_SUBSCRIBE"
+        },
+        "profileUrl": "https://www.facebook.com/grabfanthang9",
+        "profilePicture": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s32x32&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwE8z1NP&_nc_oc=AdpAxo_J11jmIQvuQRZ8R78xa-7m0vN5haGYQUMwDgHcswMdSazaWHREvGeNfjN12T4&_nc_zt=24&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQNCdBcHAa6z8lBfR2txkDVe4jkU8vqJPL2KsD82jUB4Bw&oe=6AC6CEAD",
+        "profileId": "61566440117452",
+        "profileName": "Grab Fan Tháng 9",
+        "likesCount": "0",
+        "threadingDepth": 0
+      }
+    ],
+    "topLevelUrl": "https://www.facebook.com/61566440117452/posts/122231300186548003",
+    "facebookId": "61566440117452",
+    "pageAdLibrary": {
+      "id": "389752807563648",
+      "pamv_comms_data": null
+    },
+    "inputUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN"
+  },
+  {
+    "facebookUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN",
+    "postId": "122231179796548003",
+    "pageName": "grabfanthang9",
+    "url": "https://www.facebook.com/grabfanthang9/posts/pfbid07pyBoHkRxpFgEAiLErFy4mnrVRo9haRPwbLVpF6mwKbKBi9Qrsgp4BWFr3kmpi35l",
+    "time": "2026-09-30T12:21:07.000Z",
+    "timestamp": 1790770867,
+    "user": {
+      "id": "61566440117452",
+      "name": "Grab Fan Tháng 9",
+      "profileUrl": "https://www.facebook.com/61566440117452",
+      "profilePic": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.30808-1/616404090_122201045090548003_6194367086855691459_n.jpg?stp=cp0_dst-jpg_tt6&cstp=mx914x914&ctp=s50x50&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pX2OcNNxahkQ7kNvwE8z1NP&_nc_oc=AdpAxo_J11jmIQvuQRZ8R78xa-7m0vN5haGYQUMwDgHcswMdSazaWHREvGeNfjN12T4&_nc_zt=24&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQNCdBcHAa6z8lBfR2txkDVe4jkU8vqJPL2KsD82jUB4Bw&oe=6AC6CEAD"
+    },
+    "collaborators": [
+      {
+        "__typename": "User",
+        "__isEntity": "User",
+        "__isActor": "User",
+        "id": "61566440117452",
+        "url": "https://www.facebook.com/grabfanthang9",
+        "profile_url": "https://www.facebook.com/grabfanthang9",
+        "short_name": "Grab Fan Tháng 9",
+        "work_info": null,
+        "__module_operation_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink_user$normalization.graphql"
+        },
+        "__module_component_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink.react"
+        },
+        "work_foreign_entity_info": null,
+        "is_verified": true,
+        "mobileUrl": "https://m.facebook.com/grabfanthang9/",
+        "__isNode": "User"
+      },
+      {
+        "__typename": "User",
+        "__isEntity": "User",
+        "__isActor": "User",
+        "id": "61572949840463",
+        "url": "https://www.facebook.com/rapfanthamthinh",
+        "profile_url": "https://www.facebook.com/rapfanthamthinh",
+        "short_name": "Rap Fan Thám Thính",
+        "work_info": null,
+        "__module_operation_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink_user$normalization.graphql"
+        },
+        "__module_component_CometTextWithEntitiesRelay_textWithEntities": {
+          "__dr": "ProfileGeminiWeakReferenceLink.react"
+        },
+        "work_foreign_entity_info": null,
+        "is_verified": false,
+        "mobileUrl": "https://m.facebook.com/rapfanthamthinh/",
+        "__isNode": "User"
+      }
+    ],
+    "text": "X-xin lũi mò 👉 👈",
+    "likes": 147,
+    "comments": 49,
+    "shares": 4,
+    "topReactionsCount": 4,
+    "media": [
+      {
+        "thumbnail": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.99422-6/825909899_1103260438909289_2825858116500461030_n.png?stp=dst-jpg_tt6&cstp=mx1167x1171&ctp=p526x296&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wo_9vikKG4EQ7kNvwEfun3Y&_nc_oc=AdqzpG-7klrvCBPpKf51GNc-cFafD8RwOr0rN7gnu_29EnRwAqUN0Y2dVug6H6EZl5E&_nc_zt=14&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQOToNxWhQxmdhn18O_dj72RV-WcfDAp_CsQL6rvRU_bEw&oe=6AC6CB38",
+        "__typename": "Photo",
+        "__isMedia": "Photo",
+        "accent_color": "FFFFFFFF",
+        "photo_product_tags": [],
+        "photo_image": {
+          "uri": "https://scontent.fpit1-1.fna.fbcdn.net/v/t39.99422-6/825909899_1103260438909289_2825858116500461030_n.png?stp=dst-jpg_tt6&cstp=mx1167x1171&ctp=p526x296&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wo_9vikKG4EQ7kNvwEfun3Y&_nc_oc=AdqzpG-7klrvCBPpKf51GNc-cFafD8RwOr0rN7gnu_29EnRwAqUN0Y2dVug6H6EZl5E&_nc_zt=14&_nc_ht=scontent.fpit1-1.fna&_nc_gid=DdymhgCwgqYC2fuW0Yrmuw&_nc_ss=70289&oh=00_AQOToNxWhQxmdhn18O_dj72RV-WcfDAp_CsQL6rvRU_bEw&oe=6AC6CB38",
+          "height": 528,
+          "width": 526
+        },
+        "url": "https://www.facebook.com/photo/?fbid=122231179598548003&set=a.122111173952548003",
+        "id": "122231179598548003",
+        "feedback": {
+          "can_viewer_comment": false,
+          "id": "ZmVlZGJhY2s6MTIyMjMxMTc5Nzk2NTQ4MDAz"
+        },
+        "ocrText": "May be an image of text"
+      }
+    ],
+    "feedbackId": "ZmVlZGJhY2s6MTIyMjMxMTc5Nzk2NTQ4MDAz",
+    "reactionLikeCount": 94,
+    "reactionHahaCount": 48,
+    "reactionLoveCount": 4,
+    "reactionCareCount": 1,
+    "paidPartnership": false,
+    "topLevelUrl": "https://www.facebook.com/61566440117452/posts/122231179796548003",
+    "facebookId": "61566440117452",
+    "pageAdLibrary": {
+      "id": "389752807563648",
+      "pamv_comms_data": null
+    },
+    "inputUrl": "https://www.facebook.com/grabfanthang9?locale=vi_VN"
+  }
+]
