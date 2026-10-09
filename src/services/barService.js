@@ -75,6 +75,18 @@ const getBarsByVideoId = async (videoId) => {
     }
 };
 
+// MatchID là ID nội bộ của video được lưu trong Bars.videoId.
+const getBarsByMatchId = async (matchID) => {
+    try {
+        const bars = await Bar.findAll({
+            where: { videoId: matchID },
+        });
+        return bars;
+    } catch (error) {
+        throw new Error(`Lỗi khi lấy danh sách bar theo matchID: ${error.message}`);
+    }
+};
+
 // Lấy bar theo ID
 const getBarById = async (id) => {
     try {
@@ -183,6 +195,7 @@ const deleteBarsByVideoId = async (videoId) => {
 module.exports = {
     createBar,
     getBarsByVideoId,
+    getBarsByMatchId,
     getBarById,
     getBarExplanation,
     updateBar,

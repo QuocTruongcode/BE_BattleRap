@@ -55,6 +55,54 @@ async function searchVideos(req, res) {
     }
 }
 
+async function searchDrama(req, res) {
+    try {
+        const { keyword, page = 1, pageSize = 20 } = req.query;
+
+        if (!keyword || typeof keyword !== 'string' || keyword.trim() === '') {
+            return res.status(400).json({
+                success: false,
+                message: 'Vui lòng nhập từ khóa tìm kiếm drama'
+            });
+        }
+
+        const pageNumber = Number(page);
+        const pageSizeNumber = Number(pageSize);
+
+        if (
+            !Number.isInteger(pageNumber) ||
+            pageNumber < 1 ||
+            !Number.isInteger(pageSizeNumber) ||
+            pageSizeNumber < 1
+        ) {
+            return res.status(400).json({
+                success: false,
+                message: 'page và pageSize phải là số nguyên dương'
+            });
+        }
+
+        const result = await searchService.searchDrama(
+            keyword.trim(),
+            {
+                page: pageNumber,
+                pageSize: pageSizeNumber
+            }
+        );
+
+        return res.status(200).json({
+            success: true,
+            ...result
+        });
+    } catch (error) {
+        console.error('Lỗi searchDrama:', error);
+
+        return res.status(500).json({
+            success: false,
+            message: 'Có lỗi xảy ra khi tìm kiếm drama'
+        });
+    }
+}
+
 async function searchBattlers(req, res) {
     try {
         const { keyword, limit = 5 } = req.query;
@@ -95,5 +143,6 @@ async function searchBattlers(req, res) {
 
 module.exports = {
     searchVideos,
+    searchDrama,
     searchBattlers
 };

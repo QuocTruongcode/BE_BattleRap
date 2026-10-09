@@ -33,6 +33,43 @@ async function searchByTitle(keyword) {
     });
 }
 
+/**
+ * Tìm drama theo title
+ * Full-Text Search trên Dramas.title
+ */
+async function searchDrama(
+    keyword,
+    { page = 1, pageSize = 20 } = {}
+) {
+    const results = await sequelize.query(`
+        SELECT
+            d.id,
+            d.title,
+            d.summary,
+            ft.RANK AS score
+        FROM Dramas d
+        INNER JOIN FREETEXTTABLE(
+            Dramas,
+            title,
+            :keyword
+        ) ft
+            ON d.id = ft.[KEY]
+        ORDER BY ft.RANK DESC
+    `, {
+        replacements: { keyword },
+        type: QueryTypes.SELECT
+    });
+
+    const offset = (page - 1) * pageSize;
+
+    return {
+        total: results.length,
+        page,
+        pageSize,
+        data: results.slice(offset, offset + pageSize)
+    };
+}
+
 
 /**
  * Tìm video thông qua nội dung của Bar
@@ -234,5 +271,6 @@ async function searchVideos(
 
 module.exports = {
     searchVideos,
+    searchDrama,
     searchBattlers
 };

@@ -2,7 +2,14 @@ const Commentreviewservice = require("../services/Commentreviewservice");
 const { createJob, cancelJob, removeJob } = require("../services/Jobmanager");
 
 const getComments = async (req, res) => {
-    const { videoId, jobId: queryJobId } = req.query;
+    const { videoId, matchID, jobId: queryJobId } = req.query;
+
+    if (!matchID || !/^\d+$/.test(String(matchID))) {
+        return res.status(400).json({
+            success: false,
+            message: "matchID phải là một số nguyên hợp lệ",
+        });
+    }
 
     // Nên có jobId riêng biệt với videoId, để hủy đúng job
     // (phòng trường hợp 1 video được xử lý nhiều lần cùng lúc)
@@ -30,7 +37,12 @@ const getComments = async (req, res) => {
 
     try {
         // 5. Truyền thêm controller.signal xuống service
-        const result = await Commentreviewservice.getComments(videoId, sendEvent, controller.signal);
+        const result = await Commentreviewservice.getComments(
+            videoId,
+            Number(matchID),
+            sendEvent,
+            controller.signal
+        );
 
         // 6. Bắn event cuối cùng chứa kết quả
         sendEvent('result', result);

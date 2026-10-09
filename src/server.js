@@ -29,8 +29,10 @@ const historyChatBotRoutes = require("./routes/historyChatBotRoutes");
 const aiChatContextRoutes = require("./routes/aiChatContextRoutes");
 const checkTheRhymeRoutes = require("./routes/checkTheRhymeRoutes");
 const facebookPostsRoutes = require("./routes/facebookPostsRoutes");
+const facebookCommentsRoutes = require("./routes/facebookCommentsRoutes");
 const dramaRoutes = require("./routes/dramaRoutes");
 const dramaEventRoutes = require("./routes/dramaEventRoutes");
+const reviewDramaRoutes = require("./routes/reviewDramaRoutes");
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({
@@ -71,8 +73,10 @@ app.use("/api/history-chat-bots", historyChatBotRoutes);
 app.use("/api/ai-chat-context", aiChatContextRoutes);
 app.use("/api/check-the-rhyme", checkTheRhymeRoutes);
 app.use("/api/facebook-posts", facebookPostsRoutes);
+app.use("/api/facebook-comments", facebookCommentsRoutes);
 app.use("/api/dramas", dramaRoutes);
 app.use("/api/drama-events", dramaEventRoutes);
+app.use("/api/review-drama", reviewDramaRoutes);
 
 app.listen(3001, () => {
     console.log("Server started at port 3001");

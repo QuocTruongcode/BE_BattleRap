@@ -10,6 +10,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Video.hasMany(models.DramaEvent, {
+        foreignKey: 'videoID',
+        as: 'DramaEvents',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE'
+      });
+
       Video.hasOne(models.Entity, {
         foreignKey: 'RefID',
         sourceKey: 'id',
