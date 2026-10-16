@@ -48,12 +48,14 @@ const askWithContext = async (req, res) => {
         const items = await aiChatContextService.getLatestConversationContext(conversationID, userID);
         const latestItem = items[items.length - 1];
         let markdown = formatItemsAsMarkdown(items);
+        markdown = wrapChatHistory(markdown);
 
         if (latestItem?.role !== 'user' || latestItem.content !== question.trim()) {
             markdown = [markdown, `Câu hỏi cần trả lời: ${question.trim()}`].filter(Boolean).join('\n');
         }
 
-        markdown = wrapChatHistory(markdown);
+        // console.log("Check markdown before wrap: ", markdown)
+
 
         // console.log("Check markdown question: ", markdown)
 

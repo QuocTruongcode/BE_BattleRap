@@ -58,6 +58,13 @@ module.exports = (sequelize, DataTypes) => {
     videoId: DataTypes.INTEGER,
     barttelID: DataTypes.INTEGER,
     barType: DataTypes.STRING,
+    averageScore: DataTypes.FLOAT,
+    bayesianAverange: DataTypes.FLOAT,
+    totalReaction: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
   }, {
     sequelize,
     modelName: 'Bar',

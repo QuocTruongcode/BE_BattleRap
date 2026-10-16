@@ -57,25 +57,49 @@ const validateInput = ({ links, onlyPostsNewerThan, onlyPostsOlderThan }) => {
     }
 };
 
-const scrapeFacebookPosts = async ({
-    links,
-    onlyPostsNewerThan,
-    onlyPostsOlderThan,
-}) => {
-    validateInput({ links, onlyPostsNewerThan, onlyPostsOlderThan });
+const validatePostUrl = (url) => {
+    if (typeof url !== "string" || url.trim().length === 0) {
+        const error = new Error("'url' phải là một đường dẫn Facebook hợp lệ");
+        error.statusCode = 400;
+        throw error;
+    }
 
+    const normalizedUrl = url.trim();
+    let parsedUrl;
+    try {
+        parsedUrl = new URL(normalizedUrl);
+    } catch {
+        const error = new Error(`URL không hợp lệ: ${normalizedUrl}`);
+        error.statusCode = 400;
+        throw error;
+    }
+
+    if (parsedUrl.protocol !== "https:" || !FACEBOOK_HOST.test(parsedUrl.hostname)) {
+        const error = new Error(`URL phải thuộc Facebook và sử dụng HTTPS: ${normalizedUrl}`);
+        error.statusCode = 400;
+        throw error;
+    }
+
+    return normalizedUrl;
+};
+
+const mapPostFields = (posts) => posts.map((post) => ({
+    facebookUrl: post.facebookUrl,
+    postId: post.postId,
+    pageName: post.pageName,
+    url: post.url,
+    time: post.time,
+    text: post.text,
+}));
+
+const runFacebookPostsScraper = async (input) => {
     const token = process.env.APIFY_API_KEY;
     if (!token) {
         throw new Error("Missing APIFY_API_TOKEN in environment variables");
     }
 
     const client = new ApifyClient({ token });
-    const run = await client.actor("apify/facebook-posts-scraper").call({
-        startUrls: links.map((url) => ({ url })),
-        resultsLimit: 20,
-        onlyPostsNewerThan,
-        onlyPostsOlderThan,
-    });
+    const run = await client.actor("apify/facebook-posts-scraper").call(input);
 
     if (run.status !== "SUCCEEDED") {
         throw new Error(`Facebook posts scraper finished with status: ${run.status}`);
@@ -101,17 +125,37 @@ const scrapeFacebookPosts = async ({
         offset += items.length;
     }
 
-    return posts.map((post) => ({
-        facebookUrl: post.facebookUrl,
-        postId: post.postId,
-        pageName: post.pageName,
-        url: post.url,
-        time: post.time,
-        text: post.text,
+    return posts;
+};
 
-    }));
+const scrapeFacebookPosts = async ({
+    links,
+    onlyPostsNewerThan,
+    onlyPostsOlderThan,
+}) => {
+    validateInput({ links, onlyPostsNewerThan, onlyPostsOlderThan });
+
+    const posts = await runFacebookPostsScraper({
+        startUrls: links.map((url) => ({ url })),
+        resultsLimit: 100,
+        onlyPostsNewerThan,
+        onlyPostsOlderThan,
+    });
+
+    return mapPostFields(posts);
+};
+
+const scrapeFacebookPostByUrl = async (url) => {
+    const validUrl = validatePostUrl(url);
+    const posts = await runFacebookPostsScraper({
+        startUrls: [{ url: validUrl }],
+        resultsLimit: 1,
+    });
+
+    return mapPostFields(posts);
 };
 
 module.exports = {
     scrapeFacebookPosts,
+    scrapeFacebookPostByUrl,
 };

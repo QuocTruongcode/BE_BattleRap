@@ -59,6 +59,16 @@ const checkBarUserPairUnique = async (data) => {
     };
 };
 
+const extractUniqueBarIDs = (data) => {
+    const barIDsByKey = new Map();
+
+    for (const { barID } of data) {
+        barIDsByKey.set(String(barID), barID);
+    }
+
+    return [...barIDsByKey.values()];
+};
+
 const createBarReaction = async (data) => {
     try {
         if (!data.barID) throw new Error("barID là bắt buộc");
@@ -91,6 +101,8 @@ const createBarReactions = async (data) => {
             throw new Error("Danh sách BarReaction không được để trống");
         }
 
+        console.log("Check data: ", data)
+
         for (const [index, item] of data.entries()) {
             if (!item || !item.barID) {
                 throw new Error(`BarReaction tại vị trí ${index} thiếu barID`);
@@ -116,6 +128,8 @@ const createBarReactions = async (data) => {
                 ReactionType: item.ReactionType,
             })))
             : [];
+
+        await caculateScoreBar(extractUniqueBarIDs(data));
 
         return [...updatedItems, ...createdItems];
     } catch (error) {
@@ -180,6 +194,69 @@ const getBarReactionsByBarId = async (barId) => {
         return await BarReaction.findAll({ where: { barID: barId }, include: [{ model: AllCode, as: 'Reaction' }] });
     } catch (error) {
         throw new Error(`Lỗi khi lấy BarReaction theo barID: ${error.message}`);
+    }
+};
+
+const caculateScoreBar = async (barIDs) => {
+    try {
+        if (!Array.isArray(barIDs)) {
+            throw new Error("Danh sách barID phải là một mảng");
+        }
+        if (barIDs.length === 0) return [];
+
+        const reactions = await BarReaction.findAll({
+            where: { barID: { [Op.in]: barIDs } },
+            attributes: ['barID', 'ReactionType'],
+        });
+        const scoresByReactionType = new Map([
+            ['R0', 5],
+            ['R1', 8],
+            ['R2', 10],
+            ['R11', 2],
+            ['R12', 0],
+        ]);
+        const scoresByBar = new Map();
+
+        for (const reaction of reactions) {
+            const barKey = String(reaction.barID);
+            const current = scoresByBar.get(barKey) || { total: 0, count: 0 };
+            current.total += scoresByReactionType.get(reaction.ReactionType) || 0;
+            current.count += 1;
+            scoresByBar.set(barKey, current);
+        }
+
+        const m = 2;
+        const scores = barIDs.map((barID) => {
+            const reactionScores = scoresByBar.get(String(barID)) || { total: 0, count: 0 };
+            const averageScore = reactionScores.count === 0
+                ? 0
+                : reactionScores.total / reactionScores.count;
+            const bayesianAverange = (
+                (reactionScores.count / (reactionScores.count + m)) * averageScore
+                + (m / (reactionScores.count + m)) * 6.5
+            );
+
+            return {
+                barID,
+                averageScore,
+                totalReaction: reactionScores.count,
+                bayesianAverange,
+            };
+        });
+
+        console.log("Check scores: ", scores)
+
+        await Promise.all(scores.map(({ barID, averageScore, totalReaction, bayesianAverange }) =>
+            Bar.update({
+                averageScore,
+                totalReaction,
+                bayesianAverange,
+            }, { where: { id: barID } })
+        ));
+
+        return scores;
+    } catch (error) {
+        throw new Error(`Lỗi khi tính điểm Bar: ${error.message}`);
     }
 };
 
@@ -250,6 +327,7 @@ module.exports = {
     getAllBarReactions,
     getBarReactionById,
     getBarReactionsByBarId,
+    caculateScoreBar,
     getBarReactionsByUserAndVideo,
     updateBarReaction,
     deleteBarReaction,

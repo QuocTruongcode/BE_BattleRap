@@ -2,6 +2,15 @@ const barService = require("./barService");
 const dramaEventService = require("./dramaEventService");
 const { Bar, Explanation, Video, Battler, Drama } = require("../../models");
 
+const cleanMetadata = (metadata) => Object.fromEntries(
+    Object.entries(metadata).filter(([, value]) => (
+        value !== null
+        && value !== undefined
+        && !(typeof value === "string" && value.trim() === "")
+        && !(Array.isArray(value) && value.length === 0)
+    )),
+);
+
 const createBarChunk = async (barId) => {
     const [barDetails, explanations] = await Promise.all([
         barService.getBarExplanation(barId),
@@ -31,11 +40,12 @@ const createBarChunk = async (barId) => {
     return {
         chunkID: `chunk_bar_${barId}`,
         text,
-        metadata: {
+        metadata: cleanMetadata({
             type: "bar",
+            barID: barId,
             match_id: barDetails.videoID,
             battler_id: barDetails.battlerId,
-        },
+        }),
     };
 };
 
@@ -61,10 +71,11 @@ const createVideoChunk = async (video) => {
     return {
         chunkID: `chunk_match_${video.id}`,
         text,
-        metadata: {
+        metadata: cleanMetadata({
             type: "match",
+            videoID: video.id,
             dramaEvent_id: dramaEvents.map(({ id }) => id),
-        },
+        }),
     };
 };
 
@@ -117,10 +128,10 @@ const createAllBattlerChunks = async () => {
         return {
             chunkID: `chunk_battler_${battler.id}`,
             text,
-            metadata: {
+            metadata: cleanMetadata({
                 type: "battler",
-
-            },
+                battlerID: battler.id,
+            }),
         };
     });
 };
@@ -141,10 +152,10 @@ const createDramaChunk = async (dramaId) => {
     const dramaChunk = {
         chunkID: `chunk_drama_${drama.id}`,
         text: `Drama có tên là ${drama.title ?? ""}\nDiễn biến chính: ${drama.summary ?? ""}`,
-        metadata: {
+        metadata: cleanMetadata({
             type: "drama",
             drama_id: drama.id,
-        },
+        }),
     };
 
     const dramaEventChunks = dramaEvents.map((dramaEvent) => {
@@ -154,11 +165,11 @@ const createDramaChunk = async (dramaId) => {
         return {
             chunkID: `dramaEvent_${dramaEvent.id}`,
             text: `Sự kiện: ${dramaEvent.title ?? ""} Các phản ứng của cộng đồng được ghi lại như sau như sau: ${review}`,
-            metadata: {
+            metadata: cleanMetadata({
                 type: "drama_event",
                 drama_id: drama.id,
                 dramaEvent_id: dramaEvent.id,
-            },
+            }),
         };
     });
 

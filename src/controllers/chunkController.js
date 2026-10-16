@@ -53,6 +53,9 @@ const getBarChunksByVideoIdController = async (req, res) => {
 
     try {
         const chunks = await chunkService.createChunksByVideoId(Number(videoID));
+
+        // console.log("Check chunk: ", chunks);
+
         if (!chunks) {
             return res.status(404).json({
                 success: false,
@@ -60,15 +63,17 @@ const getBarChunksByVideoIdController = async (req, res) => {
             });
         }
 
-        const response = await axios.post(
+        await axios.post(
             `${AI_SERVER_URL}/api/chunks/bars/embed`,
             { data: chunks },
         );
 
+        // console.log("Lưu thành công");
+
 
         return res.status(200).json({
             success: true,
-            data: response.data,
+
         });
     } catch (error) {
         return res.status(500).json({
@@ -118,17 +123,22 @@ const getDramaChunkController = async (req, res) => {
     }
 
     try {
-        const chunk = await chunkService.createDramaChunk(Number(dramaID));
-        if (!chunk) {
+        const chunks = await chunkService.createDramaChunk(Number(dramaID));
+        if (!chunks) {
             return res.status(404).json({
                 success: false,
                 message: "Drama không tồn tại",
             });
         }
 
+        await axios.post(
+            `${AI_SERVER_URL}/api/chunks/bars/embed`,
+            { data: chunks },
+        );
+
         return res.status(200).json({
             success: true,
-            data: chunk,
+            data: chunks,
         });
     } catch (error) {
         return res.status(500).json({
