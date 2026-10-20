@@ -21,6 +21,30 @@ module.exports = (sequelize, DataTypes) => {
                 sourceKey: 'id',
                 as: 'historyChatBots'
             });
+
+            User.hasMany(models.CommentVideo, {
+                foreignKey: 'userID',
+                sourceKey: 'id',
+                as: 'CommentVideos'
+            });
+
+            User.hasMany(models.ReplyComment, {
+                foreignKey: 'userID',
+                sourceKey: 'id',
+                as: 'ReplyComments'
+            });
+
+            User.hasMany(models.ReplyComment, {
+                foreignKey: 'replyUserID',
+                sourceKey: 'id',
+                as: 'ReceivedReplies'
+            });
+
+            User.hasMany(models.ReactionComment, {
+                foreignKey: 'userID',
+                sourceKey: 'id',
+                as: 'ReactionComments'
+            });
         }
     }
 

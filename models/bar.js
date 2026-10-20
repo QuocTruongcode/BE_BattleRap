@@ -10,6 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Bar.hasMany(models.CommentVideo, {
+        foreignKey: 'barID',
+        sourceKey: 'id',
+        as: 'CommentVideos'
+      });
+
       Bar.hasOne(models.Explanation, {
         foreignKey: 'barId',
         onDelete: 'CASCADE',

@@ -53,6 +53,15 @@ const getAllDramasController = async (req, res) => {
     }
 };
 
+const getDramasWithVideosController = async (req, res) => {
+    try {
+        const dramas = await dramaService.getDramasWithVideos();
+        return res.status(200).json({ success: true, data: dramas });
+    } catch (error) {
+        return sendError(res, error);
+    }
+};
+
 const getDramaByIdController = async (req, res) => {
     const { id } = req.params;
     if (!isValidId(id)) {
@@ -135,6 +144,7 @@ const deleteDramaController = async (req, res) => {
 module.exports = {
     createDramaController,
     getAllDramasController,
+    getDramasWithVideosController,
     getDramaByIdController,
     updateDramaController,
     deleteDramaController,

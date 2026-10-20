@@ -33,6 +33,9 @@ const facebookCommentsRoutes = require("./routes/facebookCommentsRoutes");
 const dramaRoutes = require("./routes/dramaRoutes");
 const dramaEventRoutes = require("./routes/dramaEventRoutes");
 const reviewDramaRoutes = require("./routes/reviewDramaRoutes");
+const commentRoutes = require("./routes/commentRoutes");
+const replyCommentRoutes = require("./routes/replyCommentRoutes");
+const reactionCommentRoutes = require("./routes/reactionCommentRoutes");
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({
@@ -77,6 +80,9 @@ app.use("/api/facebook-comments", facebookCommentsRoutes);
 app.use("/api/dramas", dramaRoutes);
 app.use("/api/drama-events", dramaEventRoutes);
 app.use("/api/review-drama", reviewDramaRoutes);
+app.use("/api/comments", commentRoutes);
+app.use("/api/replies", replyCommentRoutes);
+app.use("/api/reaction-comments", reactionCommentRoutes);
 
 app.listen(3001, () => {
     console.log("Server started at port 3001");

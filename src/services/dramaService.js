@@ -1,4 +1,5 @@
 const { Drama, DramaEvent } = require("../../models");
+const videoService = require("./videoService");
 
 const createDrama = async (dramaData) => {
     return Drama.create({
@@ -10,6 +11,39 @@ const createDrama = async (dramaData) => {
 const getAllDramas = async () => {
     return Drama.findAll({
         order: [["createdAt", "DESC"]],
+    });
+};
+
+const getDramasWithVideos = async () => {
+    const [dramas, videos] = await Promise.all([
+        Drama.findAll({
+            attributes: ["id", "title"],
+            include: [{
+                model: DramaEvent,
+                as: "DramaEvents",
+                attributes: ["videoID"],
+            }],
+        }),
+        videoService.getAllVideos(),
+    ]);
+
+    const videosById = new Map(videos.map((video) => [String(video.id), video]));
+
+    return dramas.map((drama) => {
+        const dramaData = drama.get({ plain: true });
+        const dramaVideos = new Map();
+        dramaData.DramaEvents.forEach(({ videoID }) => {
+            const video = videosById.get(String(videoID));
+            if (video) {
+                dramaVideos.set(String(video.id), video);
+            }
+        });
+
+        return {
+            id: dramaData.id,
+            title: dramaData.title,
+            videos: Array.from(dramaVideos.values()),
+        };
     });
 };
 
@@ -57,6 +91,7 @@ const deleteDrama = async (id) => {
 module.exports = {
     createDrama,
     getAllDramas,
+    getDramasWithVideos,
     getDramaById,
     updateDrama,
     deleteDrama,
