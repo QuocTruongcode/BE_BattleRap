@@ -23,6 +23,12 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE'
       });
 
+      Video.hasOne(models.KeyR2, {
+        foreignKey: 'VideoID',
+        sourceKey: 'id',
+        as: 'KeyR2'
+      });
+
       Video.hasOne(models.Entity, {
         foreignKey: 'RefID',
         sourceKey: 'id',
@@ -46,6 +52,10 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     linkVideo: DataTypes.STRING,
     linkBunny: DataTypes.STRING,
+    storageId: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     thumbnailUrl: DataTypes.STRING,
     battlerID: DataTypes.INTEGER,
     review: DataTypes.TEXT,

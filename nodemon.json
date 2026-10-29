@@ -1,0 +1,3 @@
+{
+  "ignore": ["hls_output", "hls_private"]
+}

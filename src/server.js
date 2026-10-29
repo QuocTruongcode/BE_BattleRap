@@ -10,6 +10,8 @@ const app = express();
 
 // Import routes
 const videoRoutes = require("./routes/videoRoutes");
+const folderVideoRouter = require("./routes/folderVideoRouter");
+const keysDeCodeVideoRouter = require("./routes/keysDeCodeVideoRouter");
 const barRoutes = require("./routes/barRoutes");
 const explanationRoutes = require("./routes/explanationRoutes");
 const barRelationshipRoutes = require("./routes/barRelationshipRoutes");
@@ -83,6 +85,8 @@ app.use("/api/review-drama", reviewDramaRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/replies", replyCommentRoutes);
 app.use("/api/reaction-comments", reactionCommentRoutes);
+app.use("/api/folder-videos", folderVideoRouter);
+app.use("/api/keys", keysDeCodeVideoRouter);
 
 app.listen(3001, () => {
     console.log("Server started at port 3001");

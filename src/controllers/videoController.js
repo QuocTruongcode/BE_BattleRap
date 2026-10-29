@@ -1,19 +1,35 @@
 const videoService = require("../services/videoService");
+const path = require("node:path");
+const fs = require("node:fs/promises");
+const videoProcessingService = require("../services/videoProcessingService");
 
 // Tạo video mới
 const createVideoController = async (req, res) => {
     try {
-        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore } = req.body;
+        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore, storageId, FileName } = req.body;
         // console.log("Check request body: ", req.body)
-        // console.log("Check thumbnailUrl: ", thumbnailUrl)
+        console.log("Check FileName: ", FileName)
 
         // Validation - kiểm tra dữ liệu đầu vào
-        if (!title || !linkVideo) {
+        if (!title || !linkVideo || !thumbnailUrl) {
             return res.status(400).json({
                 success: false,
-                message: "Vui lòng nhập tiêu đề và link video",
+                message: "Vui lòng nhập tiêu đề và link video, link thumnail",
             });
         }
+
+        let fullPath = null;
+        if (FileName) {
+            const safeName = path.basename(String(FileName));
+
+            fullPath = path.join(process.env.FOLDER_VIDEO_PATH, safeName);
+            endPath = path.join(process.env.FOLDER_UPLOADED_VIDEO, safeName);
+
+            try { await fs.access(fullPath); }
+            catch { return res.status(400).json({ success: false, message: "Không tìm thấy file" }); }
+        }
+
+        console.log("Check fullPath: ", fullPath)
 
         // Gọi service để tạo video
         const video = await videoService.createVideo({
@@ -25,7 +41,17 @@ const createVideoController = async (req, res) => {
             review,
             eventID,
             cleanScore,
+            storageId: storageId ?? null,
         });
+
+        if (fullPath) {
+            videoProcessingService.processVideoFile({
+                videoId: video.id,
+                fullPath,
+                endPath,
+                bucket: process.env.R2_BUCKET_NAME,
+            });
+        }
 
         res.status(201).json({
             success: true,
@@ -86,7 +112,7 @@ const getVideoByIdController = async (req, res) => {
 const updateVideoController = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore } = req.body;
+        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore, storageID, storageId } = req.body;
 
         // Validation id
         if (!id || isNaN(id)) {
@@ -113,6 +139,7 @@ const updateVideoController = async (req, res) => {
             review,
             eventID,
             cleanScore,
+            storageId: storageID !== undefined ? storageID : storageId,
         });
 
         res.status(200).json({

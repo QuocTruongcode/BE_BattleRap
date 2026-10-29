@@ -12,6 +12,7 @@ const createVideo = async (videoData) => {
             review: videoData.review,
             eventID: videoData.eventID,
             cleanScore: videoData.cleanScore,
+            storageId: videoData.storageId ?? videoData.storageID ?? null,
         });
         return video;
     } catch (error) {
