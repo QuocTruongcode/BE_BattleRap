@@ -350,6 +350,51 @@ async function encodeRendition(
     await run("ffmpeg", args);
 }
 
+
+/**
+ * Tạo video Preview MP4 từ 12 giây đầu video gốc.
+ * Preview không có âm thanh để tối ưu dung lượng
+ * và phục vụ autoplay khi rê chuột.
+ */
+async function createPreview(input, outDir) {
+    const previewPath = path.join(outDir, "preview.mp4");
+
+    const args = [
+        "-hide_banner",
+        "-loglevel", "error",
+        "-y",
+
+        "-i", input,
+
+        // Chỉ lấy video, tối đa 12 giây đầu tiên.
+        "-t", "12",
+        "-map", "0:v:0",
+        "-an",
+
+        // Giới hạn độ phân giải tối đa 854x480.
+        "-vf",
+        "scale=854:480:force_original_aspect_ratio=decrease:force_divisible_by=2",
+
+        // Encode MP4 dung lượng thấp.
+        "-c:v", "libx264",
+        "-preset", "veryfast",
+        "-crf", "28",
+        "-pix_fmt", "yuv420p",
+
+        // Tối ưu phát video qua HTTP.
+        "-movflags", "+faststart",
+
+        previewPath
+    ];
+
+    await run("ffmpeg", args);
+
+    console.log(`Đã tạo Preview: ${previewPath}`);
+
+    return previewPath;
+}
+
+
 // --------------------------------------------------
 // 5. Tạo master playlist
 // --------------------------------------------------
@@ -409,6 +454,16 @@ async function upload(outDir, remote, bucket, storageId) {
         "--header-upload",
         "Content-Type: video/mp2t",
     ]);
+
+
+    // Bước 2: upload video Preview MP4.
+    await run("rclone", [
+        ...common,
+        "--include", "preview.mp4",
+        "--header-upload",
+        "Content-Type: video/mp4",
+    ]);
+
 
     // Bước 2: upload playlist sau khi segment đã có.
     await run("rclone", [
@@ -507,6 +562,8 @@ async function runPipeline(options) {
     const info = await probe(input);
     const renditions = pickRenditions(info.height);
 
+    // Tạo video Preview 12 giây đầu.
+    await createPreview(input, outDir);
     console.log(
         `\nVideo gốc: ${info.width}x${info.height}, ` +
         `${info.duration.toFixed(1)} giây, ` +
@@ -564,7 +621,7 @@ async function runPipeline(options) {
         video_id: args.id,
         storage_id: storageId,
         master_playlist: `v/${storageId}/master.m3u8`,
-
+        preview: `v/${storageId}/preview.mp4`,
         // Dữ liệu bí mật: chỉ lưu ở nơi backend tin cậy.
         key_hex: key.toString("hex"),
         key_url: keyUrl,
@@ -609,6 +666,7 @@ async function runPipeline(options) {
 
     console.log(`\nMetadata: ${metaFile}`);
     console.log(`Playlist trên R2: ${meta.master_playlist}`);
+    console.log(`Preview: ${meta.preview}`);
     console.log(`Thư mục HLS: ${outDir}`);
     console.log(`Thư mục riêng tư: ${privateDir}`);
 

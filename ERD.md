@@ -145,6 +145,7 @@ erDiagram
     ReplyComment {
         INTEGER id PK
         INTEGER commentID FK
+        INTEGER replyCommentID FK
         INTEGER userID FK
         INTEGER replyUserID FK
         TEXT content
@@ -204,6 +205,7 @@ erDiagram
     Video o|--o{ DramaEvent : "videoID nullable"
 
     CommentVideo ||--o{ ReplyComment : "commentID"
+    ReplyComment o|--o{ ReplyComment : "replyCommentID parent nullable"
     User ||--o{ ReplyComment : "userID author"
     User ||--o{ ReplyComment : "replyUserID recipient"
     User ||--o{ ReactionComment : "userID"
@@ -222,6 +224,8 @@ erDiagram
 - `PK`: khóa chính; `FK`: quan hệ/khóa ngoại được khai báo qua model; `UK`: duy nhất.
 - Các cột không ghi `PK` là nullable theo mặc định của Sequelize, trừ khi model
   chỉ định khác.
+- `ReplyComment.commentID` luôn bắt buộc; `ReplyComment.replyCommentID` chỉ có
+  giá trị khi trả lời một reply khác.
 - `VideoBattler` là bảng nối nhiều-nhiều giữa `Video` và `Battler`.
 - `Entity.RefID` là tham chiếu đa hình đến `Video.id` hoặc `Bar.id`, tùy
   `EntityType`; hai liên kết này không có ràng buộc khóa ngoại vật lý.

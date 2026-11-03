@@ -1,4 +1,4 @@
-const { Battler } = require("../../models");
+const { Battler, Bar, Sequelize } = require("../../models");
 
 // Tạo battler mới
 const createBattler = async (battlerData) => {
@@ -21,6 +21,19 @@ const getAllBattlers = async () => {
     try {
         const battlers = await Battler.findAll({
             order: [["createdAt", "DESC"]],
+            include: [{
+                model: Bar,
+                as: "Bars",
+                where: {
+                    bayesianAverange: {
+                        [Sequelize.Op.gt]: 7,
+                    },
+                },
+                attributes: {
+                    exclude: ["createdAt", "updatedAt"],
+                },
+                required: false,
+            }],
         });
 
         return battlers;

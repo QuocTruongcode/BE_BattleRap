@@ -31,6 +31,19 @@ const getReplyCommentsByComment = async (req, res) => {
     }
 };
 
+const getReplyCommentsByReply = async (req, res) => {
+    const { replyCommentID } = req.params;
+    if (!isPositiveInteger(replyCommentID)) {
+        return res.status(400).json({ success: false, message: "replyCommentID phải là số nguyên dương" });
+    }
+    try {
+        const replies = await replyCommentService.getReplyCommentsByReply(Number(replyCommentID));
+        return res.status(200).json({ success: true, data: replies });
+    } catch (error) {
+        return handleError(res, error, "getReplyCommentsByReply");
+    }
+};
+
 const getReplyCommentById = async (req, res) => {
     const { id } = req.params;
     if (!isPositiveInteger(id)) {
@@ -46,12 +59,18 @@ const getReplyCommentById = async (req, res) => {
 
 const createReplyComment = async (req, res) => {
     const body = req.body;
-    const allowedFields = ["commentID", "replyUserID", "content"];
+    const allowedFields = ["commentID", "replyCommentID", "replyUserID", "content"];
     if (!body || Array.isArray(body) || Object.keys(body).some((field) => !allowedFields.includes(field))) {
         return res.status(400).json({ success: false, message: "Dữ liệu trả lời bình luận không hợp lệ" });
     }
-    if (!isPositiveInteger(body.commentID)) {
+    const hasComment = body.commentID !== undefined && body.commentID !== null;
+    const hasParentReply = body.replyCommentID !== undefined && body.replyCommentID !== null;
+
+    if (hasComment && !isPositiveInteger(body.commentID)) {
         return res.status(400).json({ success: false, message: "commentID phải là số nguyên dương" });
+    }
+    if (hasParentReply && !isPositiveInteger(body.replyCommentID)) {
+        return res.status(400).json({ success: false, message: "replyCommentID phải là số nguyên dương" });
     }
     if (!isPositiveInteger(body.replyUserID)) {
         return res.status(400).json({ success: false, message: "replyUserID phải là số nguyên dương" });
@@ -62,7 +81,8 @@ const createReplyComment = async (req, res) => {
 
     try {
         const reply = await replyCommentService.createReplyComment({
-            commentID: Number(body.commentID),
+            commentID: hasComment ? Number(body.commentID) : null,
+            replyCommentID: hasParentReply ? Number(body.replyCommentID) : null,
             userID: Number(req.user.userId),
             replyUserID: Number(body.replyUserID),
             content: body.content.trim()
@@ -113,6 +133,7 @@ const deleteReplyComment = async (req, res) => {
 
 module.exports = {
     getReplyCommentsByComment,
+    getReplyCommentsByReply,
     getReplyCommentById,
     createReplyComment,
     updateReplyComment,

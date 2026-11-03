@@ -5,6 +5,7 @@ const commentController = require("../controllers/commentController");
 const router = express.Router();
 
 router.get("/video/:videoID", commentController.getCommentsByVideo);
+router.get("/bar/:barID", commentController.getCommentsByBar);
 router.get("/:id", commentController.getCommentById);
 router.post("/", requireAuth, commentController.createComment);
 router.put("/:id", requireAuth, commentController.updateComment);

@@ -5,6 +5,7 @@ const replyCommentController = require("../controllers/replyCommentController");
 const router = express.Router();
 
 router.get("/comment/:commentID", replyCommentController.getReplyCommentsByComment);
+router.get("/reply/:replyCommentID", replyCommentController.getReplyCommentsByReply);
 router.get("/:id", replyCommentController.getReplyCommentById);
 router.post("/", requireAuth, replyCommentController.createReplyComment);
 router.put("/:id", requireAuth, replyCommentController.updateReplyComment);

@@ -30,6 +30,7 @@ const getAllVideos = async () => {
             Bar.findAll({
                 attributes: [
                     'videoId',
+                    [sequelize.fn('SUM', sequelize.col('totalReaction')), 'totalReaction'],
                     [sequelize.fn('COUNT', sequelize.literal('CASE WHEN [bayesianAverange] > 9 THEN 1 END')), 'above9'],
                     [sequelize.fn('COUNT', sequelize.literal('CASE WHEN [bayesianAverange] >= 7 AND [bayesianAverange] <= 9 THEN 1 END')), 'from7To9'],
                     [sequelize.fn('COUNT', sequelize.literal('CASE WHEN [bayesianAverange] > 2 AND [bayesianAverange] <= 4 THEN 1 END')), 'above2To4'],
@@ -48,6 +49,7 @@ const getAllVideos = async () => {
 
             return {
                 ...video.toJSON(),
+                totalReaction: Number(counts?.totalReaction ?? 0),
                 barScoreCounts: [
                     { range: 'genius', count: Number(counts?.above9 ?? 0) },
                     { range: 'great', count: Number(counts?.from7To9 ?? 0) },
@@ -55,7 +57,7 @@ const getAllVideos = async () => {
                     { range: 'bad', count: Number(counts?.from0ToBelow2 ?? 0) },
                 ],
             };
-        });
+        }).sort((firstVideo, secondVideo) => secondVideo.totalReaction - firstVideo.totalReaction);
     } catch (error) {
         throw new Error(`Lỗi khi lấy danh sách video: ${error.message}`);
     }

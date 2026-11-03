@@ -10,6 +10,18 @@ module.exports = (sequelize, DataTypes) => {
                 as: 'CommentVideo'
             });
 
+            ReplyComment.belongsTo(models.ReplyComment, {
+                foreignKey: 'replyCommentID',
+                targetKey: 'id',
+                as: 'ParentReplyComment'
+            });
+
+            ReplyComment.hasMany(models.ReplyComment, {
+                foreignKey: 'replyCommentID',
+                sourceKey: 'id',
+                as: 'ChildReplyComments'
+            });
+
             ReplyComment.belongsTo(models.User, {
                 foreignKey: 'userID',
                 targetKey: 'id',
@@ -40,6 +52,10 @@ module.exports = (sequelize, DataTypes) => {
         commentID: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        replyCommentID: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         },
         userID: {
             type: DataTypes.INTEGER,

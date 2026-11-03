@@ -28,6 +28,20 @@ const getCommentsByVideo = async (req, res) => {
     }
 };
 
+const getCommentsByBar = async (req, res) => {
+    const { barID } = req.params;
+    if (!isPositiveInteger(barID)) {
+        return res.status(400).json({ success: false, message: "barID phải là số nguyên dương" });
+    }
+
+    try {
+        const comments = await commentService.getCommentsByBar(Number(barID));
+        return res.status(200).json({ success: true, data: comments });
+    } catch (error) {
+        return handleError(res, error, "getCommentsByBar");
+    }
+};
+
 const getCommentById = async (req, res) => {
     const { id } = req.params;
     if (!isPositiveInteger(id)) {
@@ -118,6 +132,7 @@ const deleteComment = async (req, res) => {
 
 module.exports = {
     getCommentsByVideo,
+    getCommentsByBar,
     getCommentById,
     createComment,
     updateComment,
