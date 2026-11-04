@@ -16,10 +16,6 @@
     "quoteIdentifiers": true
   },
   "production": {
-    "username": "sa",
-    "password": "1",
-    "database": "BattleRapDB",
-    "host": "localhost",
     "dialect": "mssql",
     "quoteIdentifiers": true
   }

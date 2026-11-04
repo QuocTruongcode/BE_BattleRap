@@ -8,9 +8,7 @@ async function googleLogin(req, res) {
         if (!idToken) {
             return res.status(400).json({ message: "Thiếu idToken" });
         }
-
         const token = await authService.loginWithGoogle(idToken);
-        console.log("Check token: ", token)
         res.json({ token });
     } catch (err) {
         console.error(err);

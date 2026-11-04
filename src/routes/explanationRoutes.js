@@ -1,10 +1,11 @@
 const express = require("express");
 const explanationController = require("../controllers/explanationController");
+const requireRole = require("../middleware/requireRole");
 
 const router = express.Router();
 
 // POST: Tạo explanation (1 hoặc nhiều)
-router.post("/", explanationController.createExplanationController);
+router.post("/", requireRole("U0"), explanationController.createExplanationController);
 
 // GET: Lấy tất cả explanation
 router.get("/", explanationController.getAllExplanationsController);
@@ -16,9 +17,9 @@ router.get("/bar/:barId", explanationController.getExplanationsByBarIdController
 router.get("/:id", explanationController.getExplanationByIdController);
 
 // PUT: Cập nhật explanation
-router.put("/:id", explanationController.updateExplanationController);
+router.put("/:id", requireRole("U0"), explanationController.updateExplanationController);
 
 // DELETE: Xóa explanation
-router.delete("/:id", explanationController.deleteExplanationController);
+router.delete("/:id", requireRole("U0"), explanationController.deleteExplanationController);
 
 module.exports = router;

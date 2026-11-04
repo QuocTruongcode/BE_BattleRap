@@ -6,8 +6,31 @@ const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const environmentConfigs = require(__dirname + '/../config/config.json');
+const baseConfig = environmentConfigs[env];
 const db = {};
+
+if (!baseConfig) {
+  throw new Error(`No database configuration found for NODE_ENV=${env}`);
+}
+
+function getRequiredEnv(name) {
+  const value = process.env[name];
+  if (!value || value.trim() === '') {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return value;
+}
+
+const config = env === 'production'
+  ? {
+      ...baseConfig,
+      host: getRequiredEnv('DB_HOST'),
+      database: getRequiredEnv('DB_NAME'),
+      username: getRequiredEnv('DB_USER'),
+      password: getRequiredEnv('DB_PASSWORD')
+    }
+  : baseConfig;
 
 let sequelize;
 if (config.use_env_variable) {
