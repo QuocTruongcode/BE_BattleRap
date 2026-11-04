@@ -4,13 +4,20 @@
 module.exports = {
     async up(queryInterface, Sequelize) {
         const guestUserId = 5;
-        const [guestUsers] = await queryInterface.sequelize.query(
-            'SELECT [id] FROM [Users] WHERE [id] = :guestUserId',
-            { replacements: { guestUserId } }
+
+        const [[{ total }]] = await queryInterface.sequelize.query(
+            'SELECT COUNT(*) AS total FROM [BarReactions]'
         );
 
-        if (guestUsers.length === 0) {
-            throw new Error(`User mặc định với ID ${guestUserId} không tồn tại`);
+        if (Number(total) > 0) {
+            const [guestUsers] = await queryInterface.sequelize.query(
+                'SELECT [id] FROM [Users] WHERE [id] = :guestUserId',
+                { replacements: { guestUserId } }
+            );
+
+            if (guestUsers.length === 0) {
+                throw new Error(`User mặc định với ID ${guestUserId} không tồn tại`);
+            }
         }
 
         await queryInterface.addColumn('BarReactions', 'userID', {
@@ -21,7 +28,7 @@ module.exports = {
                 key: 'id'
             },
             onDelete: 'NO ACTION',
-            onUpdate: 'NO ACTION'   // ← đã sửa
+            onUpdate: 'NO ACTION'
         });
 
         await queryInterface.sequelize.query(
@@ -37,7 +44,7 @@ module.exports = {
                 key: 'id'
             },
             onDelete: 'NO ACTION',
-            onUpdate: 'NO ACTION'   // ← đã sửa
+            onUpdate: 'NO ACTION'
         });
     },
 
