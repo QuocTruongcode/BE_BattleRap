@@ -28,7 +28,7 @@ const createVideoController = async (req, res) => {
         //     catch { return res.status(400).json({ success: false, message: "Không tìm thấy file" }); }
         // }
 
-        console.log("Check fullPath: ", fullPath)
+        // console.log("Check fullPath: ", fullPath)
 
         // Gọi service để tạo video
         const video = await sequelize.transaction(async (transaction) => {
