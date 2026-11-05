@@ -1,7 +1,7 @@
 const { Video, Bar, sequelize } = require("../../models");
 
 // Tạo video mới
-const createVideo = async (videoData) => {
+const createVideo = async (videoData, options = {}) => {
     try {
         const video = await Video.create({
             title: videoData.title,
@@ -13,7 +13,7 @@ const createVideo = async (videoData) => {
             eventID: videoData.eventID,
             cleanScore: videoData.cleanScore,
             storageId: videoData.storageId ?? videoData.storageID ?? null,
-        });
+        }, { transaction: options.transaction });
         return video;
     } catch (error) {
         throw new Error(`Lỗi khi tạo video: ${error.message}`);
@@ -77,13 +77,13 @@ const getVideoById = async (id) => {
 };
 
 // Cập nhật video
-const updateVideo = async (id, videoData) => {
+const updateVideo = async (id, videoData, options = {}) => {
     try {
-        const video = await Video.findByPk(id);
+        const video = await Video.findByPk(id, { transaction: options.transaction });
         if (!video) {
             throw new Error("Video không tồn tại");
         }
-        await video.update(videoData);
+        await video.update(videoData, { transaction: options.transaction });
         return video;
     } catch (error) {
         throw new Error(`Lỗi khi cập nhật video: ${error.message}`);

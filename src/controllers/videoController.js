@@ -1,8 +1,8 @@
 const videoService = require("../services/videoService");
 const path = require("node:path");
 const fs = require("node:fs/promises");
-const videoProcessingService = require("../services/videoProcessingService");
-
+const videoJobService = require("../services/videoJobService");
+const { sequelize } = require("../../models");
 // Tạo video mới
 const createVideoController = async (req, res) => {
     try {
@@ -23,7 +23,6 @@ const createVideoController = async (req, res) => {
             const safeName = path.basename(String(FileName));
 
             fullPath = path.join(process.env.FOLDER_VIDEO_PATH, safeName);
-            endPath = path.join(process.env.FOLDER_UPLOADED_VIDEO, safeName);
 
             try { await fs.access(fullPath); }
             catch { return res.status(400).json({ success: false, message: "Không tìm thấy file" }); }
@@ -32,27 +31,28 @@ const createVideoController = async (req, res) => {
         console.log("Check fullPath: ", fullPath)
 
         // Gọi service để tạo video
-        const video = await videoService.createVideo({
-            title,
-            linkVideo,
-            linkBunny,
-            thumbnailUrl,
-            battlerID,
-            review,
-            eventID,
-            cleanScore,
-            storageId: storageId ?? null,
+        const video = await sequelize.transaction(async (transaction) => {
+            const createdVideo = await videoService.createVideo({
+                title,
+                linkVideo,
+                linkBunny,
+                thumbnailUrl,
+                battlerID,
+                review,
+                eventID,
+                cleanScore,
+                storageId: storageId ?? null,
+            }, { transaction });
+
+            if (FileName) {
+                await videoJobService.createJob(
+                    { videoID: createdVideo.id, fileName: FileName },
+                    { transaction }
+                );
+            }
+
+            return createdVideo;
         });
-
-        if (fullPath) {
-            videoProcessingService.processVideoFile({
-                videoId: video.id,
-                fullPath,
-                endPath,
-                bucket: process.env.R2_BUCKET_NAME,
-            });
-        }
-
         res.status(201).json({
             success: true,
             message: "Tạo video thành công",

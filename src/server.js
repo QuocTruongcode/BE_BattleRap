@@ -38,11 +38,13 @@ const reviewDramaRoutes = require("./routes/reviewDramaRoutes");
 const commentRoutes = require("./routes/commentRoutes");
 const replyCommentRoutes = require("./routes/replyCommentRoutes");
 const reactionCommentRoutes = require("./routes/reactionCommentRoutes");
-const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173")
-    .split(",")
-    .map(s => s.trim());
+const workerRoutes = require("./routes/workerRoutes");
+// const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173")
+//     .split(",")
+//     .map(s => s.trim());
 
-app.use(cors({ origin: allowedOrigins }));
+// app.use(cors({ origin: allowedOrigins }));
+app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({
     limit: "50mb",
@@ -52,6 +54,10 @@ app.use(express.urlencoded({
 app.get("/", (req, res) => {
     res.send("DissLens Backend running");
 });
+
+// API dành riêng cho Worker (không cần authenticate)
+app.use("/api/worker", workerRoutes);
+
 
 // Route login KHÔNG cần authenticate (vì đây là nơi tạo token, chưa có token)
 app.use("/api/auth", authRoutes);

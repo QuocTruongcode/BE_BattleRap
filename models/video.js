@@ -46,6 +46,11 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: 'battlerID',
         as: 'Battlers'
       });
+
+      Video.hasMany(models.VideoJob, {
+        foreignKey: 'videoID',
+        as: 'VideoJobs'
+      });
     }
   }
   Video.init({
