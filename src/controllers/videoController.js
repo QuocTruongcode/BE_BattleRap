@@ -18,15 +18,15 @@ const createVideoController = async (req, res) => {
             });
         }
 
-        let fullPath = null;
-        if (FileName) {
-            const safeName = path.basename(String(FileName));
+        // let fullPath = null;
+        // if (FileName) {
+        //     const safeName = path.basename(String(FileName));
 
-            fullPath = path.join(process.env.FOLDER_VIDEO_PATH, safeName);
+        //     fullPath = path.join(process.env.FOLDER_VIDEO_PATH, safeName);
 
-            try { await fs.access(fullPath); }
-            catch { return res.status(400).json({ success: false, message: "Không tìm thấy file" }); }
-        }
+        //     try { await fs.access(fullPath); }
+        //     catch { return res.status(400).json({ success: false, message: "Không tìm thấy file" }); }
+        // }
 
         console.log("Check fullPath: ", fullPath)
 
