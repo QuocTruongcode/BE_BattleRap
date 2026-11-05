@@ -12,8 +12,12 @@ const syncFiles = async (files) => {
 };
 
 const getFiles = async () => {
-    const fileContents = await fs.readFile(filesPath, "utf8");
-    return JSON.parse(fileContents);
+    try {
+        return JSON.parse(await fs.readFile(filesPath, "utf8"));
+    } catch (error) {
+        if (error.code === "ENOENT") return [];
+        throw error;
+    }
 };
 
 module.exports = { syncFiles, getFiles };
