@@ -56,6 +56,29 @@ const getAllCodesController = async (req, res) => {
     }
 };
 
+const getAllCodeByTypeController = async (req, res) => {
+    try {
+        const { type } = req.params;
+        if (!type || !type.trim()) {
+            return res.status(400).json({
+                success: false,
+                message: "Type không được để trống",
+            });
+        }
+
+        const allCodes = await allCodeService.getAllCodeByType(type);
+        res.status(200).json({
+            success: true,
+            data: allCodes,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+    }
+};
+
 const getAllCodeByIdController = async (req, res) => {
     try {
         const { id } = req.params;
@@ -139,6 +162,7 @@ const deleteAllCodeController = async (req, res) => {
 module.exports = {
     createAllCodeController,
     getAllCodesController,
+    getAllCodeByTypeController,
     getAllCodeByIdController,
     updateAllCodeController,
     deleteAllCodeController,

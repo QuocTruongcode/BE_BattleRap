@@ -3,10 +3,16 @@ const path = require("node:path");
 const fs = require("node:fs/promises");
 const videoJobService = require("../services/videoJobService");
 const { sequelize } = require("../../models");
+
+const isValidVideoStatus = (status) => status === 0 || status === 1;
+const hasNonEmptyValue = (value) => value !== undefined
+    && value !== null
+    && String(value).trim() !== "";
+
 // Tạo video mới
 const createVideoController = async (req, res) => {
     try {
-        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore, storageId, FileName } = req.body;
+        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore, storageId, FileName, status } = req.body;
         // console.log("Check request body: ", req.body)
         console.log("Check FileName: ", FileName)
 
@@ -15,6 +21,13 @@ const createVideoController = async (req, res) => {
             return res.status(400).json({
                 success: false,
                 message: "Vui lòng nhập tiêu đề và link video, link thumnail",
+            });
+        }
+
+        if (status !== undefined && !isValidVideoStatus(status)) {
+            return res.status(400).json({
+                success: false,
+                message: "Status chỉ được nhận giá trị 0 hoặc 1",
             });
         }
 
@@ -42,6 +55,7 @@ const createVideoController = async (req, res) => {
                 eventID,
                 cleanScore,
                 storageId: storageId ?? null,
+                status: status === undefined ? 0 : status,
             }, { transaction });
 
             if (FileName) {
@@ -69,7 +83,10 @@ const createVideoController = async (req, res) => {
 // Lấy tất cả video
 const getAllVideosController = async (req, res) => {
     try {
-        const videos = await videoService.getAllVideos();
+        const canViewAllStatuses = ["U0", "U1"].includes(req.user?.UserType);
+        const videos = await videoService.getAllVideos({
+            includeNonZeroStatus: canViewAllStatuses,
+        });
         res.status(200).json({
             success: true,
             data: videos,
@@ -95,15 +112,16 @@ const getVideoByIdController = async (req, res) => {
             });
         }
 
-        const video = await videoService.getVideoById(id);
+        const video = await videoService.getVideoById(id, req.user?.userId);
         res.status(200).json({
             success: true,
             data: video,
         });
     } catch (error) {
-        res.status(404).json({
+        res.status(error.statusCode || 404).json({
             success: false,
             message: error.message,
+            ...(error.errcode !== undefined && { errcode: error.errcode }),
         });
     }
 };
@@ -112,7 +130,7 @@ const getVideoByIdController = async (req, res) => {
 const updateVideoController = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore, storageID, storageId } = req.body;
+        const { title, linkVideo, linkBunny, thumbnailUrl, battlerID, review, eventID, cleanScore, storageID, storageId, status } = req.body;
 
         // Validation id
         if (!id || isNaN(id)) {
@@ -130,6 +148,17 @@ const updateVideoController = async (req, res) => {
             });
         }
 
+        if (status !== undefined && !isValidVideoStatus(status)) {
+            return res.status(400).json({
+                success: false,
+                message: "Status chỉ được nhận giá trị 0 hoặc 1",
+            });
+        }
+
+        const updateOptions = hasNonEmptyValue(req.body.key)
+            ? { key: req.body.key }
+            : {};
+        const storageIdValue = storageID !== undefined ? storageID : storageId;
         const video = await videoService.updateVideo(id, {
             title,
             linkVideo,
@@ -139,8 +168,9 @@ const updateVideoController = async (req, res) => {
             review,
             eventID,
             cleanScore,
-            storageId: storageID !== undefined ? storageID : storageId,
-        });
+            ...(hasNonEmptyValue(storageIdValue) && { storageId: storageIdValue }),
+            ...(status !== undefined && { status }),
+        }, updateOptions);
 
         res.status(200).json({
             success: true,

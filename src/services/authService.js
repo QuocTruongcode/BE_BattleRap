@@ -84,6 +84,7 @@ async function getUserProfile(userId) {
         Email: user.Email,
         UserName: user.UserName,
         UserType: user.UserType,
+        score: user.score,
         // thêm các trường khác nếu model User của bạn có, ví dụ:
         // username: user.username,
     };

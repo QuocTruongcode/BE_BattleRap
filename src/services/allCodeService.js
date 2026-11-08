@@ -21,6 +21,17 @@ const getAllCodes = async () => {
     }
 };
 
+const getAllCodeByType = async (type) => {
+    try {
+        return await AllCode.findAll({
+            where: { Type: type },
+            order: [["id", "ASC"]]
+        });
+    } catch (error) {
+        throw new Error(`Lỗi khi lấy AllCode theo Type: ${error.message}`);
+    }
+};
+
 const getAllCodeById = async (id) => {
     try {
         const allCode = await AllCode.findByPk(id);
@@ -69,6 +80,7 @@ const deleteAllCode = async (id) => {
 module.exports = {
     createAllCode,
     getAllCodes,
+    getAllCodeByType,
     getAllCodeById,
     updateAllCode,
     deleteAllCode,

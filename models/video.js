@@ -66,6 +66,14 @@ module.exports = (sequelize, DataTypes) => {
     review: DataTypes.TEXT,
     eventID: DataTypes.INTEGER,
     cleanScore: DataTypes.FLOAT,
+    status: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      validate: {
+        isIn: [[0, 1]]
+      }
+    },
   }, {
     sequelize,
     modelName: 'Video',

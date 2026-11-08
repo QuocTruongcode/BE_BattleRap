@@ -65,7 +65,12 @@ module.exports = (sequelize, DataTypes) => {
         UserType: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+        score: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            defaultValue: 0
+        },
     }, {
         sequelize,
         modelName: 'User',

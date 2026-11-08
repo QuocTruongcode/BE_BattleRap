@@ -17,6 +17,7 @@ const explanationRoutes = require("./routes/explanationRoutes");
 const barRelationshipRoutes = require("./routes/barRelationshipRoutes");
 const allCodeRoutes = require("./routes/allCodeRoutes");
 const userRoutes = require("./routes/userRoutes");
+const scoreUserRoutes = require("./routes/scoreUserRoutes");
 const createReviewRouter = require("./routes/createReviewRouter");
 const searchRoutes = require("./routes/searchRoutes");
 const barReactionRoutes = require("./routes/barReactionRoutes");
@@ -57,7 +58,8 @@ app.get("/", (req, res) => {
 
 // API dành riêng cho Worker (không cần authenticate)
 app.use("/api/worker", workerRoutes);
-
+// API chấm điểm user
+app.use("/api/score-user", scoreUserRoutes);
 
 // Route login KHÔNG cần authenticate (vì đây là nơi tạo token, chưa có token)
 app.use("/api/auth", authRoutes);
@@ -67,7 +69,7 @@ app.use(authenticate);
 app.use(guestReadOnly);
 
 // nếu không có token hoặc không hợp lệ => trả về 401 Unauthorized
-app.use(requireAuth);
+// app.use(requireAuth);
 
 app.use("/api/videos", videoRoutes);
 app.use("/api/bars", barRoutes);
@@ -97,6 +99,7 @@ app.use("/api/replies", replyCommentRoutes);
 app.use("/api/reaction-comments", reactionCommentRoutes);
 app.use("/api/folder-videos", folderVideoRouter);
 app.use("/api/keys", keysDeCodeVideoRouter);
+
 
 app.listen(3001, () => {
     console.log("Server started at port 3001");

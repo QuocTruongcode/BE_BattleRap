@@ -1,5 +1,9 @@
 const { User, AllCode } = require("../../models");
 
+const getDefaultScore = (userType) => (
+    userType === "U0" || userType === "U1" ? 10 : 0
+);
+
 const validateUserType = async (userType) => {
     if (!userType) {
         throw new Error("UserType không được để trống");
@@ -26,6 +30,7 @@ const createUser = async (userData) => {
             Email: userData.Email,
             google_sub: userData.google_sub,
             UserType: userData.UserType,
+            score: userData.score ?? getDefaultScore(userData.UserType),
         });
     } catch (error) {
         throw new Error(`Lỗi khi tạo User: ${error.message}`);
@@ -81,6 +86,7 @@ const updateUser = async (id, userData) => {
             Email: userData.Email,
             google_sub: userData.google_sub,
             UserType: userData.UserType,
+            score: userData.score ?? getDefaultScore(userData.UserType),
         });
 
         return user;

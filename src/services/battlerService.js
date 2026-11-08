@@ -1,4 +1,4 @@
-const { Battler, Bar, Sequelize } = require("../../models");
+const { Battler, Bar, Video, Sequelize } = require("../../models");
 
 // Tạo battler mới
 const createBattler = async (battlerData) => {
@@ -31,6 +31,14 @@ const getAllBattlers = async () => {
                 },
                 attributes: {
                     exclude: ["createdAt", "updatedAt"],
+                },
+                required: false,
+            }, {
+                model: Video,
+                as: "Videos",
+                attributes: ["id", "title", "thumbnailUrl"],
+                through: {
+                    attributes: [],
                 },
                 required: false,
             }],

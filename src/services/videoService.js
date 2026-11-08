@@ -1,4 +1,7 @@
-const { Video, Bar, sequelize } = require("../../models");
+const { Video, Bar, KeyR2, User, sequelize } = require("../../models");
+const hasNonEmptyValue = (value) => value !== undefined
+    && value !== null
+    && String(value).trim() !== "";
 
 // Tạo video mới
 const createVideo = async (videoData, options = {}) => {
@@ -13,6 +16,7 @@ const createVideo = async (videoData, options = {}) => {
             eventID: videoData.eventID,
             cleanScore: videoData.cleanScore,
             storageId: videoData.storageId ?? videoData.storageID ?? null,
+            status: videoData.status === undefined ? 0 : videoData.status,
         }, { transaction: options.transaction });
         return video;
     } catch (error) {
@@ -21,10 +25,11 @@ const createVideo = async (videoData, options = {}) => {
 };
 
 // Lấy tất cả video
-const getAllVideos = async () => {
+const getAllVideos = async ({ includeNonZeroStatus = true } = {}) => {
     try {
         const [videos, barCounts] = await Promise.all([
             Video.findAll({
+                ...(includeNonZeroStatus ? {} : { where: { status: 0 } }),
                 order: [['createdAt', 'DESC']] // 👈 mới nhất lên trên
             }),
             Bar.findAll({
@@ -64,12 +69,26 @@ const getAllVideos = async () => {
 };
 
 // Lấy video theo ID
-const getVideoById = async (id) => {
+const getVideoById = async (id, userId) => {
     try {
         const video = await Video.findByPk(id);
         if (!video) {
             throw new Error("Video không tồn tại");
         }
+
+        const user = userId ? await User.findByPk(userId) : null;
+        const userScore = Number(user?.score);
+        const requiredScore = Number(video.cleanScore ?? 0);
+
+        if (!user || !Number.isFinite(userScore)
+            || !Number.isFinite(requiredScore)
+            || userScore < requiredScore) {
+            const videoData = video.toJSON();
+            delete videoData.linkVideo;
+            delete videoData.storageId;
+            return videoData;
+        }
+
         return video;
     } catch (error) {
         throw new Error(`Lỗi khi lấy video: ${error.message}`);
@@ -79,12 +98,40 @@ const getVideoById = async (id) => {
 // Cập nhật video
 const updateVideo = async (id, videoData, options = {}) => {
     try {
-        const video = await Video.findByPk(id, { transaction: options.transaction });
-        if (!video) {
-            throw new Error("Video không tồn tại");
-        }
-        await video.update(videoData, { transaction: options.transaction });
-        return video;
+        const updateInTransaction = async (transaction) => {
+            const video = await Video.findByPk(id, { transaction });
+            if (!video) {
+                throw new Error("Video không tồn tại");
+            }
+
+            const updateData = { ...videoData };
+            if (!hasNonEmptyValue(updateData.storageId)) {
+                delete updateData.storageId;
+            }
+            await video.update(updateData, { transaction });
+
+            if (hasNonEmptyValue(options.key)) {
+                const keyRecord = await KeyR2.findOne({
+                    where: { VideoID: video.id },
+                    transaction
+                });
+
+                if (keyRecord) {
+                    await keyRecord.update({ key: options.key }, { transaction });
+                } else {
+                    await KeyR2.create(
+                        { VideoID: video.id, key: options.key },
+                        { transaction }
+                    );
+                }
+            }
+
+            return video;
+        };
+
+        return options.transaction
+            ? await updateInTransaction(options.transaction)
+            : await sequelize.transaction(updateInTransaction);
     } catch (error) {
         throw new Error(`Lỗi khi cập nhật video: ${error.message}`);
     }
