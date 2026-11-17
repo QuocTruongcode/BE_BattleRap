@@ -22,15 +22,21 @@ const getHistoryChatBotsByConversation = async (conversationID, userID) => {
 
 const getRecentConversationIDs = async (userID) => {
     const conversations = await HistoryChatBot.findAll({
-        attributes: ['conversationID', [fn('MAX', col('id')), 'latestId']],
+        attributes: [
+            'conversationID',
+            [fn('MAX', col('id')), 'latestId'],
+            [fn('MIN', col('createdAt')), 'createdAt'],
+            [fn('MAX', col('updatedAt')), 'updatedAt'],
+        ],
         where: { UserID: userID },
         group: ['conversationID'],
         order: [[fn('MAX', col('id')), 'DESC']],
         limit: 10,
         raw: true,
     });
+    console.log('Recent conversations:', conversations);
 
-    return conversations.map(({ conversationID }) => conversationID);
+    return conversations;
 };
 
 const getHistoryChatBotById = async (id, userID) => {

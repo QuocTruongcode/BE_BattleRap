@@ -225,7 +225,7 @@ const caculateScoreBar = async (barIDs) => {
             scoresByBar.set(barKey, current);
         }
 
-        const m = 2;
+        const m = 20; // số lượng phản ứng tối thiểu để tính điểm trung bình
         const scores = barIDs.map((barID) => {
             const reactionScores = scoresByBar.get(String(barID)) || { total: 0, count: 0 };
             const averageScore = reactionScores.count === 0
@@ -233,7 +233,7 @@ const caculateScoreBar = async (barIDs) => {
                 : reactionScores.total / reactionScores.count;
             const bayesianAverange = (
                 (reactionScores.count / (reactionScores.count + m)) * averageScore
-                + (m / (reactionScores.count + m)) * 6.5
+                + (m / (reactionScores.count + m)) * 5 // 5 là điểm trung bình giả định cho tất cả các bar
             );
 
             return {
