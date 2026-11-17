@@ -71,7 +71,8 @@ const getAllVideos = async ({ includeNonZeroStatus = true } = {}) => {
 // Lấy video theo ID
 const getVideoById = async (id, userId) => {
     try {
-        const video = await Video.findByPk(id, {
+        const video = await Video.findOne({
+            where: { id, status: 0 },
             include: [{
                 model: Battler,
                 as: "Battlers",
