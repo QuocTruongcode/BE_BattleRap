@@ -2,8 +2,8 @@
 // Điều phối toàn bộ luồng: lấy comment -> lấy reply -> format -> hỏi AI.
 // Không tự gọi axios/network trực tiếp, chỉ gọi xuống các service con và truyền signal.
 
-const { fetchCommentThreads, fetchReplies } = require('./Youtubeapi');
-const { mapComments, mapReplies, convertCommentsToTextList } = require('./Mapper');
+const { fetchCommentThreads, fetchReplies, fetchVideoDetails } = require('./Youtubeapi');
+const { mapComments, mapReplies, convertCommentsToTextList, convertVideoDetailsToText } = require('./Mapper');
 const { askQuestion } = require('./Aiclient');
 const { getBarsByMatchId } = require('./barService');
 
@@ -28,6 +28,9 @@ const getReplies = async (parentId, signal) => {
 const getComments = async (videoId, matchID, onProgress = () => { }, signal) => {
     try {
         onProgress('step', { step: 'fetching_comments', message: 'Đang lấy bình luận từ YouTube...' });
+        const detailVideo = await fetchVideoDetails(videoId, signal);
+        const mappedVideoDetails = convertVideoDetailsToText(detailVideo);
+        // console.log('Video mappedVideoDetails:', mappedVideoDetails);
         const rawComments = await fetchCommentThreads(videoId, signal);
         const mappedComments = mapComments(rawComments);
 
@@ -50,6 +53,7 @@ const getComments = async (videoId, matchID, onProgress = () => { }, signal) => 
             ContextPrompt,
             'Các bar trong video:',
             barsText || '(Video chưa có bar nào.)',
+            mappedVideoDetails || '(Video không có tiêu đề hoặc mô tả.)',
             'Các bình luận:',
             commentsTextList || '(Video chưa có bình luận nào.)'
         ].join('\n\n');

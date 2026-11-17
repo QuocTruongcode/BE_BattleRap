@@ -4,7 +4,7 @@ const requireRole = require("../middleware/requireRole");
 const router = express.Router();
 
 // POST: Tạo video mới
-router.post("/", requireRole("U0"), videoController.createVideoController);
+router.post("/", videoController.createVideoController);
 
 // GET: Lấy tất cả video
 router.get("/", videoController.getAllVideosController);

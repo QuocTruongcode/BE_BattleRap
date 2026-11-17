@@ -66,7 +66,31 @@ const fetchReplies = async (parentId, signal) => {
     return allItems;
 };
 
+/**
+ * Lấy thông tin 1 video (title, description, ...).
+ * @param {string} videoId
+ * @param {AbortSignal} signal
+ * @returns {Promise<object|null>} item đầu tiên của videos.list, hoặc null nếu không tìm thấy
+ */
+const fetchVideoDetails = async (videoId, signal) => {
+    const response = await axios.get(
+        "https://www.googleapis.com/youtube/v3/videos",
+        {
+            params: {
+                part: "snippet",
+                id: videoId,
+                key: API_KEY
+            },
+            signal
+        }
+    );
+
+    return response.data.items[0] || null;
+};
+
+
 module.exports = {
     fetchCommentThreads,
-    fetchReplies
+    fetchReplies,
+    fetchVideoDetails
 };

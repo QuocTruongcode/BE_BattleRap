@@ -39,6 +39,7 @@ const reviewDramaRoutes = require("./routes/reviewDramaRoutes");
 const commentRoutes = require("./routes/commentRoutes");
 const replyCommentRoutes = require("./routes/replyCommentRoutes");
 const reactionCommentRoutes = require("./routes/reactionCommentRoutes");
+const AIRecomentRoutes = require("./routes/AIRecomentRoutes");
 const workerRoutes = require("./routes/workerRoutes");
 // const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173")
 //     .split(",")
@@ -97,6 +98,7 @@ app.use("/api/review-drama", reviewDramaRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/replies", replyCommentRoutes);
 app.use("/api/reaction-comments", reactionCommentRoutes);
+app.use("/api/ai-recommendations", AIRecomentRoutes);
 app.use("/api/folder-videos", folderVideoRouter);
 app.use("/api/keys", keysDeCodeVideoRouter);
 

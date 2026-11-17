@@ -51,8 +51,20 @@ function convertCommentsToTextList(comments) {
     return comments.map((comment) => formatComment(comment)).join("\n");
 }
 
+const convertVideoDetailsToText = (video) => {
+    if (!video || !video.snippet) return "";
+
+    const { title = "", description = "" } = video.snippet;
+
+    const safeTitle = title.trim();
+    const safeDescription = description.trim();
+
+    return `Title: ${safeTitle}\n\nDescription:\n${safeDescription}`;
+};
+
 module.exports = {
     mapComments,
     mapReplies,
-    convertCommentsToTextList
+    convertCommentsToTextList,
+    convertVideoDetailsToText
 };

@@ -7,7 +7,10 @@ const formatItemsAsMarkdown = (items) => items.map((item) => {
     return item.content;
 }).join('\n');
 
-const wrapChatHistory = (markdown) => `Lịch sử chat-------------------------\n${markdown}\nKết thúc lịch sử chat----------------------`;
+const wrapChatHistory = (markdown, title) => {
+    const history = [title ? `Tiêu đề: ${title}` : '', markdown].filter(Boolean).join('\n');
+    return `Lịch sử chat-------------------------\n${history}\nKết thúc lịch sử chat----------------------`;
+};
 
 const getLatestConversationContext = async (req, res) => {
     const userID = Number(req.user?.userId);
@@ -36,22 +39,32 @@ const askWithContext = async (req, res) => {
         return res.status(401).json({ success: false, message: 'JWT không chứa userId hợp lệ' });
     }
 
-    const { conversationID, question } = req.body || {};
+    const { conversationID, question, videoID, title } = req.body || {};
     if (typeof conversationID !== 'string' || conversationID.trim().length === 0) {
         return res.status(400).json({ success: false, message: 'conversationID không hợp lệ' });
     }
     if (typeof question !== 'string' || question.trim().length === 0) {
         return res.status(400).json({ success: false, message: 'question không hợp lệ' });
     }
+    if (title !== undefined && title !== null && typeof title !== 'string') {
+        return res.status(400).json({ success: false, message: 'title không hợp lệ' });
+    }
+    const selectedVideoID = videoID === undefined || videoID === null ? null : Number(videoID);
+    if (selectedVideoID !== null && (!Number.isSafeInteger(selectedVideoID) || selectedVideoID <= 0)) {
+        return res.status(400).json({ success: false, message: 'videoID không hợp lệ' });
+    }
 
     try {
         const items = await aiChatContextService.getLatestConversationContext(conversationID, userID);
         const latestItem = items[items.length - 1];
         let markdown = formatItemsAsMarkdown(items);
-        markdown = wrapChatHistory(markdown);
+        markdown = wrapChatHistory(markdown, typeof title === 'string' ? title.trim() : '');
 
         if (latestItem?.role !== 'user' || latestItem.content !== question.trim()) {
             markdown = [markdown, `Câu hỏi cần trả lời: ${question.trim()}`].filter(Boolean).join('\n');
+        }
+        if (selectedVideoID !== null) {
+            markdown = [markdown, `Video được chọn (videoID): ${selectedVideoID}`].filter(Boolean).join('\n');
         }
 
         // console.log("Check markdown before wrap: ", markdown)

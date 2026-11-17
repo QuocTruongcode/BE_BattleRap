@@ -1,4 +1,4 @@
-const { Video, Bar, KeyR2, User, sequelize } = require("../../models");
+const { Video, Battler, Bar, KeyR2, User, sequelize } = require("../../models");
 const hasNonEmptyValue = (value) => value !== undefined
     && value !== null
     && String(value).trim() !== "";
@@ -71,7 +71,14 @@ const getAllVideos = async ({ includeNonZeroStatus = true } = {}) => {
 // Lấy video theo ID
 const getVideoById = async (id, userId) => {
     try {
-        const video = await Video.findByPk(id);
+        const video = await Video.findByPk(id, {
+            include: [{
+                model: Battler,
+                as: "Battlers",
+                attributes: ["id", "RapName", "FullName", "image"],
+                through: { attributes: [] },
+            }],
+        });
         if (!video) {
             throw new Error("Video không tồn tại");
         }
