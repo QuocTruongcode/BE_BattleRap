@@ -41,12 +41,12 @@ const replyCommentRoutes = require("./routes/replyCommentRoutes");
 const reactionCommentRoutes = require("./routes/reactionCommentRoutes");
 const AIRecomentRoutes = require("./routes/AIRecomentRoutes");
 const workerRoutes = require("./routes/workerRoutes");
-// const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173")
-//     .split(",")
-//     .map(s => s.trim());
+const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173")
+    .split(",")
+    .map(s => s.trim());
 
-// app.use(cors({ origin: allowedOrigins }));
-app.use(cors());
+app.use(cors({ origin: allowedOrigins }));
+// app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({
     limit: "50mb",
