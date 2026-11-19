@@ -233,7 +233,7 @@ const caculateScoreBar = async (barIDs) => {
                 : reactionScores.total / reactionScores.count;
             const bayesianAverange = (
                 (reactionScores.count / (reactionScores.count + m)) * averageScore
-                + (m / (reactionScores.count + m)) * 5 // 5 là điểm trung bình giả định cho tất cả các bar
+                + (m / (reactionScores.count + m)) * 7 // 7 là điểm trung bình giả định cho tất cả các bar
             );
 
             return {

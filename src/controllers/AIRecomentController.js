@@ -44,7 +44,6 @@ const getLatestUserActivities = async (req, res) => {
 };
 
 const AI_SERVER_URL = process.env.AI_SERVER_URL;
-
 const getLatestUserActivitiesMarkdown = async (req, res) => {
     const userID = Number(req.user?.userId);
     if (!Number.isSafeInteger(userID) || userID <= 0) {
