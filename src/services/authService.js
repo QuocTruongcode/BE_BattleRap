@@ -95,5 +95,6 @@ async function getUserProfile(userId) {
 module.exports = {
     loginWithGoogle,
     loginAsGuest,
-    getUserProfile
+    getUserProfile,
+    generateUserToken
 };
