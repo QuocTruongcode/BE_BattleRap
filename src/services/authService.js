@@ -37,7 +37,7 @@ async function findOrCreateUserFromGoogle(payload) {
 
 }
 
-function generateUserToken(user) {
+function generateUserToken(user, extraClaims = {}) {
     return jwt.sign(
         {
             userId: user.id,
@@ -45,6 +45,7 @@ function generateUserToken(user) {
             Email: user.Email,
             UserName: user.UserName,
             UserType: user.UserType,
+            ...extraClaims,
         },
         process.env.JWT_SECRET,
         { expiresIn: "1d" }

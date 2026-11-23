@@ -41,12 +41,14 @@ const replyCommentRoutes = require("./routes/replyCommentRoutes");
 const reactionCommentRoutes = require("./routes/reactionCommentRoutes");
 const AIRecomentRoutes = require("./routes/AIRecomentRoutes");
 const workerRoutes = require("./routes/workerRoutes");
-const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173")
-    .split(",")
-    .map(s => s.trim());
+const appAuthRouter = require("./routes/appAuthRouter");
 
-app.use(cors({ origin: allowedOrigins }));
-// app.use(cors());
+// const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173")
+//     .split(",")
+//     .map(s => s.trim());
+
+// app.use(cors({ origin: allowedOrigins }));
+app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({
     limit: "50mb",
@@ -64,7 +66,7 @@ app.use("/api/score-user", scoreUserRoutes);
 
 // Route login KHÔNG cần authenticate (vì đây là nơi tạo token, chưa có token)
 app.use("/api/auth", authRoutes);
-
+app.use("/api/auth/app", appAuthRouter);
 // 👇 Áp dụng cho toàn bộ route bên dưới
 app.use(authenticate);
 app.use(guestReadOnly);
