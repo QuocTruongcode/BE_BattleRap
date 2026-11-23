@@ -1,6 +1,6 @@
 // controllers/appAuthController.js
 const crypto = require("crypto");
-const { User } = require("../../models/user");                              // đổi đường dẫn cho khớp project
+const { User } = require("../../models");                               // đổi đường dẫn cho khớp project
 const { generateUserToken } = require("../services/authService");   // nơi bạn export hàm này
 
 const CODE_TTL_MS = 60_000; // code sống 60 giây
